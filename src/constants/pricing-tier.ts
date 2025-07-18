@@ -1,6 +1,6 @@
 export interface Tier {
   name: string;
-  id: 'starter' | 'pro' | 'advanced';
+  id: 'starter' | 'pro';
   icon: string;
   description: string;
   features: string[];
@@ -16,7 +16,7 @@ export const PricingTier: Tier[] = [
     description: 'Ideal for individuals who want to get started with simple design tasks.',
     features: ['1 workspace', 'Limited collaboration', 'Export to PNG and SVG'],
     featured: false,
-    priceId: { month: 'pri_01hsxyh9txq4rzbrhbyngkhy46', year: 'pri_01hsxyh9txq4rzbrhbyngkhy46' },
+    priceId: { month: 'pri_01k0ap2vs9bd2bfeszm0p81tah', year: 'pri_01k07xzzaw4npgpj5skkqnv1rx' },
   },
   {
     name: 'Pro',
@@ -25,21 +25,6 @@ export const PricingTier: Tier[] = [
     description: 'Enhanced design tools for scaling teams who need more flexibility.',
     features: ['Integrations', 'Unlimited workspaces', 'Advanced editing tools', 'Everything in Starter'],
     featured: true,
-    priceId: { month: 'pri_01hsxycme6m95sejkz7sbz5e9g', year: 'pri_01hsxyeb2bmrg618bzwcwvdd6q' },
-  },
-  {
-    name: 'Advanced',
-    id: 'advanced',
-    icon: '/assets/icons/price-tiers/pro-icon.svg',
-    description: 'Powerful tools designed for extensive collaboration and customization.',
-    features: [
-      'Single sign on (SSO)',
-      'Advanced version control',
-      'Assets library',
-      'Guest accounts',
-      'Everything in Pro',
-    ],
-    featured: false,
-    priceId: { month: 'pri_01hsxyff091kyc9rjzx7zm6yqh', year: 'pri_01hsxyfysbzf90tkh2wqbfxwa5' },
+    priceId: { month: 'pri_01k07y2z8efqd1hweq5h1kqrgw', year: 'pri_01k0ap6q8sawvqzem669s1p04v' },
   },
 ];

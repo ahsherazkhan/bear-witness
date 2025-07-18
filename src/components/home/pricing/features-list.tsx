@@ -10,8 +10,8 @@ export function FeaturesList({ tier }: Props) {
     <ul className={'p-8 flex flex-col gap-4'}>
       {tier.features.map((feature: string) => (
         <li key={feature} className="flex gap-x-3">
-          <CircleCheck className={'h-6 w-6 text-muted-foreground'} />
-          <span className={'text-base'}>{feature}</span>
+          <CircleCheck className={'h-6 w-6 text-black'} />
+          <span className={'text-base text-black'}>{feature}</span>
         </li>
       ))}
     </ul>

@@ -17,11 +17,10 @@ interface Props {
 
 export function PriceCards({ loading, frequency, priceMap }: Props) {
   return (
-    <div className="isolate mx-auto grid grid-cols-1 gap-8 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+    <div className=" isolate mx-auto flex flex-col lg:flex-row gap-8 lg:justify-center lg:items-start lg:max-w-6xl">
       {PricingTier.map((tier) => (
-        <div key={tier.id} className={cn('rounded-lg bg-background/70 backdrop-blur-[6px] overflow-hidden')}>
-          <div className={cn('flex gap-5 flex-col rounded-lg rounded-b-none pricing-card-border')}>
-            {tier.featured && <FeaturedCardGradient />}
+        <div key={tier.id} className={cn('rounded-lg border-2 border-red-500 overflow-hidden w-full max-w-sm')}>
+          <div className={cn('flex gap-5 flex-col rounded-lg rounded-b-none')}>
             <PriceTitle tier={tier} />
             <PriceAmount
               loading={loading}
@@ -31,12 +30,12 @@ export function PriceCards({ loading, frequency, priceMap }: Props) {
               priceSuffix={frequency.priceSuffix}
             />
             <div className={'px-8'}>
-              <Separator className={'bg-border'} />
+              <Separator className={'bg-border text-black'} />
             </div>
-            <div className={'px-8 text-[16px] leading-[24px]'}>{tier.description}</div>
+            <div className={'px-8 text-[16px] leading-[24px] text-black'}>{tier.description}</div>
           </div>
-          <div className={'px-8 mt-8'}>
-            <Button className={'w-full'} variant={'secondary'} asChild={true}>
+          <div className={'px-8 mt-8 text-black'}>
+            <Button className={'w-full text-black bg-gray-200 hover:bg-gray-300'} variant={'secondary'} asChild={true}>
               <Link href={`/checkout/${tier.priceId[frequency.value]}`}>Get started</Link>
             </Button>
           </div>

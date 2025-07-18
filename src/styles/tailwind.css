@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Primary Colors */
+    --color-primary: #1a365d; /* blue-900 */
+    --color-primary-foreground: #ffffff; /* white */
+    --color-secondary: #2d5a87; /* blue-700 */
+    --color-secondary-foreground: #ffffff; /* white */
+
+    /* Accent Colors */
+    --color-accent: #ed8936; /* orange-400 */
+    --color-accent-foreground: #ffffff; /* white */
+    --color-tertiary: #1e40af; /* deep blue - third accent color */
+    --color-tertiary-foreground: #ffffff; /* white */
+
+    /* Background Colors */
+    --color-background: #ffffff; /* white */
+    --color-foreground: #1a202c; /* gray-900 */
+    --color-surface: #f7fafc; /* gray-50 */
+
+    /* Card Colors */
+    --color-card: #ffffff; /* white */
+    --color-card-foreground: #1a202c; /* gray-900 */
+
+    /* Popover Colors */
+    --color-popover: #ffffff; /* white */
+    --color-popover-foreground: #1a202c; /* gray-900 */
+
+    /* Muted Colors */
+    --color-muted: #f7fafc; /* gray-50 */
+    --color-muted-foreground: #4a5568; /* gray-600 */
+
+    /* Border and Input */
+    --color-border: #e2e8f0; /* gray-200 */
+    --color-input: #ffffff; /* white */
+    --color-ring: #1a365d; /* blue-900 */
+
+    /* Status Colors */
+    --color-success: #38a169; /* green-500 */
+    --color-success-foreground: #ffffff; /* white */
+    --color-warning: #d69e2e; /* yellow-500 */
+    --color-warning-foreground: #ffffff; /* white */
+    --color-error: #e53e3e; /* red-500 */
+    --color-error-foreground: #ffffff; /* white */
+    --color-destructive: #e53e3e; /* red-500 */
+    --color-destructive-foreground: #ffffff; /* white */
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer components {
+  .btn-shadow {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+
+  .card-shadow {
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  .smooth-transition {
+    transition: all 200ms ease-in-out;
+  }
+}
