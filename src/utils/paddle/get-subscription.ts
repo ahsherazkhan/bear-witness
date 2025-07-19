@@ -43,7 +43,7 @@ export async function getSubscription(subscriptionId: string): Promise<Subscript
       let dbSubscriptionId = subscriptionId;
       if (subscriptionId.startsWith('sub_')) {
         // It's a Paddle subscription ID, we need to find the database subscription
-        const { data: subscription, error: subError } = await supabase
+        const { data: subscription } = await supabase
           .from('subscriptions')
           .select('*')
           .eq('paddle_subscription_id', subscriptionId)
