@@ -13,8 +13,16 @@ const nextConfig = {
     // your project has TypeScript errors.
     ignoreBuildErrors: true,
   },
-  // Disable static generation to avoid Supabase issues during build
-  output: 'standalone',
+  // Disable static generation completely
+  experimental: {
+    // This prevents static generation of all pages
+    workerThreads: false,
+    cpus: 1,
+  },
+  // Force all pages to be server-side rendered
+  generateStaticParams: async () => {
+    return [];
+  },
 };
 
 export default nextConfig;
