@@ -17,7 +17,7 @@ export function PriceTitle({ tier }: Props) {
       {featured && (
         <div
           className={
-            'flex items-center px-3 py-1 rounded-xs border border-secondary-foreground/10 text-[14px] h-[29px] leading-[21px] text-red-500 underline'
+            'flex items-center px-3 py-1 rounded-xs border border-secondary-foreground/10 text-[14px] h-[29px] leading-[21px] text-red-900 underline'
           }
         >
           Most popular

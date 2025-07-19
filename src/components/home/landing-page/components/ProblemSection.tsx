@@ -12,7 +12,7 @@ const ProblemSection = () => {
       icon: TrendingUp,
       stat: '73%',
       description: 'Increase in AI-generated content on social media in 2024',
-      color: 'text-red-500',
+      color: 'text-maroon-500',
     },
     {
       icon: AlertTriangle,
@@ -24,7 +24,7 @@ const ProblemSection = () => {
       icon: Clock,
       stat: '4.5 hours',
       description: 'Daily time wasted on manual content verification',
-      color: 'text-yellow-500',
+      color: 'text-gray-400',
     },
   ];
 
@@ -81,7 +81,7 @@ const ProblemSection = () => {
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold text-black mb-6">
             The AI Content Crisis is
-            <span className="text-red-500"> Real & Growing</span>
+            <span className="text-maroon-500"> Real & Growing</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Every day, thousands of brands fall victim to AI-generated content that damages their reputation, misleads
@@ -110,33 +110,29 @@ const ProblemSection = () => {
         </div>
 
         {/* Brand Damage Case Studies */}
-        {/* <div className="mb-16">
-          <h3 className="text-2xl md:text-3xl font-bold text-center text-black mb-12">
-            Real Brand Damage Stories
-          </h3>
+        <div className="mb-16">
+          <h3 className="text-2xl md:text-3xl font-bold text-center text-black mb-12">Real Brand Damage Stories</h3>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {caseStudies.map((study, index) => (
-              <div key={index} className="bg-white rounded-xl p-6 shadow-lg border-l-4 border-red-500">
-                <div className="flex items-start space-x-3 mb-4">
-                  <div className="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0">
-                    <AlertCircle size={16} className="text-red-500" />
+              <div key={index} className="bg-white rounded-xl p-6 shadow-lg border-l-4 border-maroon-500">
+                <div className="flex items-start space-x-4">
+                  <div className="w-8 h-8 bg-maroon-100 rounded-full flex items-center justify-center flex-shrink-0">
+                    <AlertCircle size={16} className="text-maroon-500" />
                   </div>
-                  <div>
-                    <h4 className="font-semibold text-black mb-1">{study.company}</h4>
-                    <div className="text-sm text-red-600 font-medium">Time to Detect: {study.timeToDetect}</div>
+                  <div className="flex-1">
+                    <h3 className="text-lg font-semibold text-black mb-2">{study.company}</h3>
+                    <div className="text-sm text-maroon-600 font-medium">Time to Detect: {study.timeToDetect}</div>
+                    <p className="text-gray-600 mt-2">{study.incident}</p>
                   </div>
                 </div>
-                <p className="text-gray-600 mb-4 text-sm leading-relaxed">
-                  {study.incident}
-                </p>
-                <div className="bg-red-50 rounded-lg p-3">
-                  <div className="text-red-700 font-semibold text-sm">Impact:</div>
-                  <div className="text-red-600 text-sm">{study.impact}</div>
+                <div className="bg-maroon-50 rounded-lg p-3 mt-4">
+                  <div className="text-red-900 font-semibold text-sm">Impact:</div>
+                  <div className="text-maroon-600 text-sm">{study.impact}</div>
                 </div>
               </div>
             ))}
           </div>
-        </div> */}
+        </div>
 
         {/* Manual Verification Pain Points */}
         {/* <div className="bg-white rounded-2xl p-8 md:p-12 shadow-lg">

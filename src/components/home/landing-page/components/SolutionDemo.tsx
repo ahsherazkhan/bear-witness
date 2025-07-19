@@ -4,8 +4,8 @@ import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import {
-  Link,
   Search,
+  Link,
   MessageSquare,
   BarChart3,
   Loader2,
@@ -100,7 +100,7 @@ const SolutionDemo = () => {
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold text-black mb-6">
             See Bear Witness AI in
-            <span className="text-red-500"> Action</span>
+            <span className="text-maroon-500"> Action</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Experience real-time AI content detection with our interactive demo. Paste any social media URL or test our
@@ -112,7 +112,7 @@ const SolutionDemo = () => {
           {/* Interactive Demo Input */}
           <div className="bg-white rounded-2xl p-8 shadow-lg border">
             <h3 className="text-2xl font-bold text-black mb-6 flex items-center">
-              <Link size={24} className="mr-3 text-red-500" />
+              <Link size={24} className="mr-3 text-maroon-500" />
               Test Any Social Media Post
             </h3>
 
@@ -135,7 +135,7 @@ const SolutionDemo = () => {
                 variant="default"
                 onClick={handleAnalyze}
                 disabled={!demoUrl.trim() || isAnalyzing}
-                className="w-full bg-red-500 hover:bg-red-600 text-white"
+                className="w-full bg-red-900 hover:bg-red-600 text-white"
               >
                 <Search className="mr-2 h-4 w-4" />
                 {isAnalyzing ? 'Analyzing Content...' : 'Analyze Content'}
@@ -167,7 +167,7 @@ const SolutionDemo = () => {
           {/* Analysis Results */}
           <div className="bg-white rounded-2xl p-8 shadow-lg border">
             <h3 className="text-2xl font-bold text-black mb-6 flex items-center">
-              <BarChart3 size={24} className="mr-3 text-red-500" />
+              <BarChart3 size={24} className="mr-3 text-red-900" />
               Analysis Results
             </h3>
 
@@ -183,11 +183,11 @@ const SolutionDemo = () => {
             {isAnalyzing && (
               <div className="text-center py-12">
                 <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse">
-                  <Loader2 size={32} className="text-red-500 animate-spin" />
+                  <Loader2 size={32} className="text-red-900 animate-spin" />
                 </div>
                 <p className="text-gray-600 mb-2">Analyzing content...</p>
                 <div className="w-full bg-gray-200 rounded-full h-2">
-                  <div className="bg-red-500 h-2 rounded-full animate-pulse" style={{ width: '70%' }}></div>
+                  <div className="bg-red-900 h-2 rounded-full animate-pulse" style={{ width: '70%' }}></div>
                 </div>
               </div>
             )}
@@ -197,22 +197,22 @@ const SolutionDemo = () => {
                 {/* Detection Result */}
                 <div
                   className={`p-6 rounded-lg border-2 ${
-                    analysisResult.isAI ? 'bg-red-50 border-red-200' : 'bg-green-50 border-green-200'
+                    analysisResult.isAI ? 'bg-red-50 border-red-200' : 'bg-gray-50 border-gray-200'
                   }`}
                 >
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center space-x-3">
                       {analysisResult.isAI ? (
-                        <AlertTriangle size={24} className="text-red-500" />
+                        <AlertTriangle size={24} className="text-red-900" />
                       ) : (
-                        <CheckCircle size={24} className="text-green-500" />
+                        <CheckCircle size={24} className="text-black" />
                       )}
-                      <span className={`font-bold text-lg ${analysisResult.isAI ? 'text-red-700' : 'text-green-700'}`}>
-                        {analysisResult.isAI ? 'AI-Generated Content' : 'Human-Created Content'}
+                      <span className={`font-bold text-lg ${analysisResult.isAI ? 'text-red-700' : 'text-black'}`}>
+                        {analysisResult.isAI ? 'AI Generated' : 'Human Written'}
                       </span>
                     </div>
                     <div className="text-right">
-                      <div className={`text-2xl font-bold ${analysisResult.isAI ? 'text-red-600' : 'text-green-600'}`}>
+                      <div className={`text-2xl font-bold ${analysisResult.isAI ? 'text-red-600' : 'text-black'}`}>
                         {analysisResult.confidence}%
                       </div>
                       <div className="text-sm text-gray-500">Confidence</div>
@@ -228,7 +228,7 @@ const SolutionDemo = () => {
                   <div className="space-y-2">
                     {analysisResult.indicators.map((indicator, index) => (
                       <div key={index} className="flex items-center space-x-2">
-                        <Check size={16} className="text-green-500" />
+                        <Check size={16} className="text-black" />
                         <span className="text-sm text-gray-600">{indicator}</span>
                       </div>
                     ))}

@@ -32,14 +32,14 @@ export function SubscriptionCards({ subscriptions, className }: Props) {
                 <CardTitle className="flex flex-col justify-between items-start mb-6">
                   <div
                     className={cn('flex mb-4 w-full', {
-                      'justify-between': subscriptionItem.product.imageUrl,
-                      'justify-end': !subscriptionItem.product.imageUrl,
+                      'justify-between': subscriptionItem.price.product?.imageUrl,
+                      'justify-end': !subscriptionItem.price.product?.imageUrl,
                     })}
                   >
-                    {subscriptionItem.product.imageUrl && (
+                    {subscriptionItem.price.product?.imageUrl && (
                       <Image
-                        src={subscriptionItem.product.imageUrl}
-                        alt={subscriptionItem.product.name}
+                        src={subscriptionItem.price.product.imageUrl}
+                        alt={subscriptionItem.price.product.name}
                         width={48}
                         height={48}
                       />
@@ -48,12 +48,14 @@ export function SubscriptionCards({ subscriptions, className }: Props) {
                       <ArrowRight size={20} />
                     </Link>
                   </div>
-                  <span className={'text-xl leading-7 font-medium'}>{subscriptionItem.product.name}</span>
+                  <span className={'text-xl leading-7 font-medium'}>{subscriptionItem.price.product?.name}</span>
                 </CardTitle>
               </CardHeader>
               <CardContent className={'p-0 flex justify-between gap-3 flex-wrap xl:flex-nowrap'}>
                 <div className={'flex flex-col gap-3'}>
-                  <div className="text-base leading-6 text-secondary">{subscriptionItem.product.description}</div>
+                  <div className="text-base leading-6 text-secondary">
+                    {subscriptionItem.price.product?.description}
+                  </div>
                   <div className="text-base leading-[16px] text-primary">
                     {formattedPrice}
                     {frequency}

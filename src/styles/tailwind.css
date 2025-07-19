@@ -44,9 +44,9 @@
     --color-success-foreground: #ffffff; /* white */
     --color-warning: #d69e2e; /* yellow-500 */
     --color-warning-foreground: #ffffff; /* white */
-    --color-error: #e53e3e; /* red-500 */
+    --color-error: #7f1d1d; /* red-900 */
     --color-error-foreground: #ffffff; /* white */
-    --color-destructive: #e53e3e; /* red-500 */
+    --color-destructive: #7f1d1d; /* red-900 */
     --color-destructive-foreground: #ffffff; /* white */
   }
 

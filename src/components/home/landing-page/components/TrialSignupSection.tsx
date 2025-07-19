@@ -27,7 +27,7 @@ const TrialSignupSection = () => {
       <section id="trial-signup" className="py-20 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4">
           <div className="text-center">
-            <CheckCircle className="mx-auto h-16 w-16 text-green-500 mb-4" />
+            <CheckCircle className="mx-auto h-16 w-16 text-black mb-4" />
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Welcome to Bear Witness!</h2>
             <p className="text-lg text-gray-600 mb-8">
               Your account has been created successfully. Check your email for next steps.

@@ -4,8 +4,10 @@ import { PaymentMethodDetails } from '@/components/dashboard/subscriptions/compo
 import { PaymentType, Transaction } from '@paddle/paddle-node-sdk';
 
 function findPaymentMethodDetails(transactions?: Transaction[]) {
-  const transactionWithPaymentDetails = transactions?.find((transaction) => transaction.payments[0]?.methodDetails);
-  const firstValidPaymentMethod = transactionWithPaymentDetails?.payments[0].methodDetails;
+  const transactionWithPaymentDetails = transactions?.find(
+    (transaction) => transaction.payments && transaction.payments[0]?.methodDetails,
+  );
+  const firstValidPaymentMethod = transactionWithPaymentDetails?.payments?.[0]?.methodDetails;
   return firstValidPaymentMethod ? firstValidPaymentMethod : { type: 'unknown' as PaymentType, card: null };
 }
 

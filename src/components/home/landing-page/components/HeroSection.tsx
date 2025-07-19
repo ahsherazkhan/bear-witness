@@ -58,7 +58,7 @@ const HeroSection = () => {
               variant="default"
               size="lg"
               onClick={scrollToTrial}
-              className="font-semibold px-8 py-4 text-lg bg-red-500 hover:bg-red-600"
+              className="font-semibold px-8 py-4 text-lg text-white bg-black hover:bg-red-900"
             >
               Start Free Trial
               <ArrowRight className="ml-2 h-5 w-5" />
@@ -67,7 +67,7 @@ const HeroSection = () => {
               variant="outline"
               size="lg"
               onClick={scrollToInfo}
-              className="border-red-500 text-red-500 hover:bg-red-500 hover:text-white font-semibold px-8 py-4 text-lg"
+              className="border-red-900 text-red-900 hover:bg-red-900 hover:text-white font-semibold px-8 py-4 text-lg"
             >
               <ChevronDown className="mr-2 h-5 w-5" />
               Live Demo
@@ -79,7 +79,7 @@ const HeroSection = () => {
             <div className="bg-gradient-to-br from-white to-gray-50 rounded-lg p-6 border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
               <div className="flex items-center justify-center mb-2">
                 <div className="w-8 h-8 rounded-lg flex items-center justify-center">
-                  <Target className="h-6 w-6 text-red-500" />
+                  <Target className="h-6 w-6 text-red-900" />
                 </div>
               </div>
               <div className="text-2xl font-bold text-black mb-1">99.5%</div>
@@ -89,7 +89,7 @@ const HeroSection = () => {
             <div className="bg-gradient-to-br from-white to-gray-50 rounded-lg p-6 border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
               <div className="flex items-center justify-center mb-2">
                 <div className="w-8 h-8 rounded-lg flex items-center justify-center">
-                  <Zap className="h-6 w-6 text-red-500" />
+                  <Zap className="h-6 w-6 text-red-900" />
                 </div>
               </div>
               <div className="text-2xl font-bold text-black mb-1">&lt;2s</div>
@@ -99,7 +99,7 @@ const HeroSection = () => {
             <div className="bg-gradient-to-br from-white to-gray-50 rounded-lg p-6 border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
               <div className="flex items-center justify-center mb-2">
                 <div className="w-8 h-8 rounded-lg flex items-center justify-center">
-                  <Shield className="h-6 w-6 text-red-500" />
+                  <Shield className="h-6 w-6 text-red-900" />
                 </div>
               </div>
               <div className="text-2xl font-bold text-black mb-1">1500+</div>
@@ -112,7 +112,7 @@ const HeroSection = () => {
       {/* Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
         <div className="w-8 h-8 rounded-full flex items-center justify-center">
-          <ChevronDown className="h-6 w-6 text-red-500" />
+          <ChevronDown className="h-6 w-6 text-red-900" />
         </div>
       </div>
     </section>

@@ -87,8 +87,8 @@ const StatsSection = () => {
   const TabButton = ({ id, label, isActive, onClick }: TabButtonProps) => (
     <button
       onClick={() => onClick(id)}
-      className={`px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
-        isActive ? 'bg-gray-160 shadow-lg border border-gray-200' : 'bg-white border border-gray-400'
+      className={`px-6 py-3 rounded-lg font-medium transition-all duration-200 text-black ${
+        isActive ? 'bg-gray-160 shadow-lg border border-gray-300' : 'bg-white border border-gray-200'
       }`}
     >
       {label}
@@ -98,23 +98,11 @@ const StatsSection = () => {
   const StatCard = ({ icon: IconComponent, title, value, subtitle, trend, color = 'tertiary' }: StatCardProps) => (
     <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
       <div className="flex items-center justify-between mb-4">
-        <div
-          className={`w-12 h-12 rounded-lg flex items-center justify-center ${
-            color === 'tertiary'
-              ? 'bg-tertiary'
-              : color === 'success'
-                ? 'bg-green-500'
-                : color === 'warning'
-                  ? 'bg-yellow-500'
-                  : 'bg-red-500'
-          }`}
-        >
+        <div className={`w-12 h-12 rounded-lg flex items-center justify-center bg-red-900`}>
           <IconComponent size={24} className="text-white" />
         </div>
         {trend && (
-          <div
-            className={`flex items-center space-x-1 ${trend.direction === 'up' ? 'text-green-600' : 'text-red-600'}`}
-          >
+          <div className={`flex items-center space-x-1 ${trend.direction === 'up' ? 'text-black' : 'text-maroon-600'}`}>
             {trend.direction === 'up' ? <TrendingUp size={16} /> : <TrendingDown size={16} />}
             <span className="text-sm font-medium">{trend.value}</span>
           </div>
@@ -307,11 +295,11 @@ const StatsSection = () => {
         </div>
 
         {/* Call to Action */}
-        <div className="text-center mt-12">
+        {/* <div className="text-center mt-12">
           <Button variant="default" size="lg" className="bg-black text-white hover:bg-gray-800">
             View Full Analytics Dashboard
           </Button>
-        </div>
+        </div> */}
       </div>
     </section>
   );

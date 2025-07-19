@@ -46,7 +46,7 @@ export function SubscriptionDetail({ subscriptionId }: Props) {
       <>
         <div>
           <SubscriptionHeader subscription={subscription.data} />
-          <Separator className={'relative bg-border mb-8 dashboard-header-highlight'} />
+          <Separator className={'relative bg-border mb-8'} />
         </div>
         <div className={'grid gap-6 grid-cols-1 xl:grid-cols-6'}>
           <div className={'grid auto-rows-max gap-6 grid-cols-1 xl:col-span-2'}>

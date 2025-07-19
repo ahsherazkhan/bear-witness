@@ -129,7 +129,7 @@ const TestimonialsSection = () => {
             return (
               <div key={index} className="text-center">
                 <div className="w-16 h-16 bg-gradient-to-br from-gray-100 to-gray-200 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <IconComponent size={24} className="text-black" />
+                  <IconComponent size={24} className="text-red-900" />
                 </div>
                 <div className="text-3xl font-bold text-black mb-2">{item.metric}</div>
                 <div className="text-gray-600 text-sm">{item.label}</div>
@@ -160,7 +160,7 @@ const TestimonialsSection = () => {
               <div className="mb-8">
                 <div className="flex justify-center mb-4">
                   {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
-                    <Star key={i} size={24} className="text-yellow-400 fill-current" />
+                    <Star key={i} size={24} className="text-gray-300 fill-current" />
                   ))}
                 </div>
                 <blockquote className="text-xl md:text-2xl text-black leading-relaxed mb-8">

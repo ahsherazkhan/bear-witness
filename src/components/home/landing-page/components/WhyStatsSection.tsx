@@ -86,7 +86,7 @@ const WhyStatsSection = () => {
             className={`text-4xl md:text-5xl font-bold text-black mb-6 transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
           >
             The AI Content Crisis is
-            <span className="text-red-500"> Real</span>
+            <span className="text-red-900"> Real</span>
           </h2>
           <p
             className={`text-xl text-gray-700 max-w-3xl mx-auto transform transition-all duration-1000 delay-200 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
@@ -106,16 +106,13 @@ const WhyStatsSection = () => {
               <div
                 key={index}
                 className={`bg-gray-100 border border-gray-200 rounded-xl p-8 text-center transition-all duration-500 ${
-                  currentStat === index ? 'scale-105 border-red-500' : 'hover:border-gray-300'
+                  currentStat === index ? 'scale-105 border-red-900' : 'hover:border-gray-300'
                 }`}
               >
-                <div className="flex justify-center mb-4">
-                  <IconComponent
-                    size={48}
-                    className={`${stat.color} ${currentStat === index ? 'animate-pulse' : ''}`}
-                  />
+                <div className="flex justify-center mb-4 text-black">
+                  <IconComponent size={48} className={`${currentStat === index ? 'animate-pulse' : ''}`} />
                 </div>
-                <div className={`text-4xl font-bold mb-2 ${stat.color}`}>{stat.value}</div>
+                <div className={`text-4xl font-bold mb-2 text-black`}>{stat.value}</div>
                 <h3 className="text-xl font-semibold text-gray-800 mb-2">{stat.title}</h3>
                 <p className="text-gray-600 text-sm">{stat.description}</p>
               </div>
@@ -128,7 +125,7 @@ const WhyStatsSection = () => {
           className={`text-center mt-16 transform transition-all duration-1000 delay-800 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
         >
           <div className="bg-gray-900 border border-red-200 rounded-2xl p-8 max-w-4xl mx-auto">
-            <AlertCircle size={48} className="text-red-500 mx-auto mb-4" />
+            <AlertCircle size={48} className="text-red-900 mx-auto mb-4" />
             <h3 className="text-2xl font-bold text-white mb-4">Don't Let AI Content Destroy Your Credibility</h3>
             <p className="text-white mb-6">
               Every day you wait, more fake content infiltrates your industry. Take action now to protect your brand's

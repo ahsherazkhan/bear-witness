@@ -14,7 +14,9 @@ interface Props {
 export function SubscriptionHeader({ subscription }: Props) {
   const subscriptionItem = subscription.items[0];
 
-  const price = subscriptionItem.quantity * parseFloat(subscription?.recurringTransactionDetails?.totals.total ?? '0');
+  // Handle both Paddle API structure and our database structure
+  const product = subscriptionItem.price?.product || subscriptionItem.product;
+  const price = subscriptionItem.quantity * parseFloat(subscription?.recurringTransactionDetails?.totals?.total ?? '0');
   const formattedPrice = parseMoney(price.toString(), subscription.currencyCode);
   const frequency =
     subscription.billingCycle.frequency === 1
@@ -29,10 +31,8 @@ export function SubscriptionHeader({ subscription }: Props) {
         <SubscriptionAlerts subscription={subscription} />
         <div className={'flex items-center gap-5'}>
           <MobileSidebar />
-          {subscriptionItem.product.imageUrl && (
-            <Image src={subscriptionItem.product.imageUrl} alt={subscriptionItem.product.name} width={48} height={48} />
-          )}
-          <span className={'text-4xl leading-9 font-medium'}>{subscriptionItem.product.name}</span>
+          {product?.imageUrl && <Image src={product.imageUrl} alt={product.name} width={48} height={48} />}
+          <span className={'text-4xl leading-9 font-medium'}>{product?.name || 'Subscription'}</span>
         </div>
         <div className={'flex items-center gap-6 py-8 pb-6 flex-wrap md:flex-wrap'}>
           <div className={'flex gap-1 items-end'}>

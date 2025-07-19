@@ -5,9 +5,10 @@ import { SubscriptionErrorView } from '@/components/dashboard/subscriptions/view
 import { getSubscriptions } from '@/utils/paddle/get-subscriptions';
 
 export async function Subscriptions() {
-  const { data: subscriptions } = await getSubscriptions();
+  const subscriptionsResponse = await getSubscriptions();
 
-  if (subscriptions) {
+  if (subscriptionsResponse?.data) {
+    const subscriptions = subscriptionsResponse.data;
     if (subscriptions.length === 0) {
       return <NoSubscriptionView />;
     } else if (subscriptions.length === 1) {

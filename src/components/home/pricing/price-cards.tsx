@@ -8,6 +8,8 @@ import { PriceTitle } from '@/components/home/pricing/price-title';
 import { Separator } from '@/components/ui/separator';
 import { FeaturedCardGradient } from '@/components/gradients/featured-card-gradient';
 import Link from 'next/link';
+import { createClient } from '@/utils/supabase/client';
+import { useUserInfo } from '@/hooks/useUserInfo';
 
 interface Props {
   loading: boolean;
@@ -16,10 +18,21 @@ interface Props {
 }
 
 export function PriceCards({ loading, frequency, priceMap }: Props) {
+  const supabase = createClient();
+  const { user } = useUserInfo(supabase);
+
+  const handleGetStarted = (priceId: string) => {
+    if (!user) {
+      window.location.href = '/login';
+    } else {
+      window.location.href = `/checkout/${priceId}`;
+    }
+  };
+
   return (
     <div className=" isolate mx-auto flex flex-col lg:flex-row gap-8 lg:justify-center lg:items-start lg:max-w-6xl">
       {PricingTier.map((tier) => (
-        <div key={tier.id} className={cn('rounded-lg border-2 border-red-500 overflow-hidden w-full max-w-sm')}>
+        <div key={tier.id} className={cn('rounded-lg border-2 border-red-900 overflow-hidden w-full max-w-sm')}>
           <div className={cn('flex gap-5 flex-col rounded-lg rounded-b-none')}>
             <PriceTitle tier={tier} />
             <PriceAmount
@@ -35,8 +48,12 @@ export function PriceCards({ loading, frequency, priceMap }: Props) {
             <div className={'px-8 text-[16px] leading-[24px] text-black'}>{tier.description}</div>
           </div>
           <div className={'px-8 mt-8 text-black'}>
-            <Button className={'w-full text-black bg-gray-200 hover:bg-gray-300'} variant={'secondary'} asChild={true}>
-              <Link href={`/checkout/${tier.priceId[frequency.value]}`}>Get started</Link>
+            <Button
+              className={'w-full text-black bg-gray-200 hover:bg-gray-300'}
+              variant={'secondary'}
+              onClick={() => handleGetStarted(tier.priceId[frequency.value])}
+            >
+              Get started
             </Button>
           </div>
           <FeaturesList tier={tier} />

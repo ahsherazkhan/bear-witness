@@ -8,12 +8,19 @@ import { signup } from '@/app/signup/actions';
 import { useToast } from '@/components/ui/use-toast';
 import { Input } from '@/components/ui/input';
 import { CreditCard, BarChart3, ArrowRight, Shield, Clock } from 'lucide-react';
+import { createClient } from '@/utils/supabase/client';
+import { useRouter } from 'next/navigation';
 
 export function SignupForm({ isLandingPage }: { isLandingPage?: boolean }) {
+  const router = useRouter();
+  const supabase = createClient();
+  const { toast } = useToast();
+
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
     company: '',
+    password: '',
     agreeToTerms: false,
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -66,6 +73,12 @@ export function SignupForm({ isLandingPage }: { isLandingPage?: boolean }) {
       newErrors.company = 'Company name is required';
     }
 
+    if (!formData.password.trim()) {
+      newErrors.password = 'Password is required';
+    } else if (formData.password.length < 6) {
+      newErrors.password = 'Password must be at least 6 characters';
+    }
+
     if (!formData.agreeToTerms) {
       newErrors.agreeToTerms = 'You must agree to the terms and conditions';
     }
@@ -84,26 +97,73 @@ export function SignupForm({ isLandingPage }: { isLandingPage?: boolean }) {
 
     setIsSubmitting(true);
 
-    // Simulate API call
     try {
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-      setIsSuccess(true);
+      // Create user account with Supabase
+      const { data, error } = await supabase.auth.signUp({
+        email: formData.email,
+        password: formData.password,
+        options: {
+          data: {
+            full_name: formData.fullName,
+            company: formData.company,
+          },
+        },
+      });
+
+      if (error) {
+        console.error('Signup error:', error);
+        toast({
+          description: error.message || 'Something went wrong. Please try again.',
+          variant: 'destructive',
+        });
+        return;
+      }
+
+      if (data.user) {
+        setIsSuccess(true);
+        toast({
+          description:
+            'Account created successfully! Please check your email and click the confirmation link to verify your account.',
+          variant: 'default',
+        });
+
+        // Redirect to dashboard after a short delay
+        setTimeout(() => {
+          router.push('/dashboard');
+        }, 2000);
+      }
     } catch (error) {
       console.error('Signup error:', error);
+      toast({
+        description: 'Something went wrong. Please try again.',
+        variant: 'destructive',
+      });
     } finally {
       setIsSubmitting(false);
     }
   };
-  const { toast } = useToast();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
 
-  function handleSignup() {
-    signup({ email, password }).then((data) => {
-      if (data?.error) {
-        toast({ description: 'Something went wrong. Please try again', variant: 'destructive' });
-      }
-    });
+  if (isSuccess) {
+    return (
+      <div className="bg-white rounded-lg p-8 border border-gray-200 text-center">
+        <div className="w-20 h-20 bg-black rounded-full flex items-center justify-center mx-auto mb-6">
+          <Shield size={40} className="text-white" />
+        </div>
+        <h2 className="text-3xl font-bold text-gray-900 mb-4">Welcome to Bear Witness!</h2>
+        <p className="text-xl text-gray-600 mb-8">
+          Your account has been created successfully. Check your email for verification.
+        </p>
+        <Button
+          variant="default"
+          size="lg"
+          className="bg-black hover:bg-gray-800 text-white"
+          onClick={() => router.push('/dashboard')}
+        >
+          Go to Dashboard
+          <ArrowRight className="ml-2 h-4 w-4" />
+        </Button>
+      </div>
+    );
   }
 
   return (
@@ -120,45 +180,45 @@ export function SignupForm({ isLandingPage }: { isLandingPage?: boolean }) {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+            <label className="block text-sm font-medium text-gray-700 mb-2">Name</label>
             <Input
               type="text"
               name="fullName"
               placeholder="John Smith"
               value={formData.fullName}
               onChange={handleInputChange}
-              className={errors.fullName ? 'border-red-500' : 'bg-white'}
+              className={errors.fullName ? 'border-maroon-500' : 'bg-white'}
               required
             />
-            {errors.fullName && <p className="text-red-500 text-sm mt-1">{errors.fullName}</p>}
+            {errors.fullName && <p className="text-maroon-500 text-sm mt-1">{errors.fullName}</p>}
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Work Email</label>
+            <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
             <Input
               type="email"
               name="email"
-              placeholder="john@company.com"
+              placeholder="your@email.com"
               value={formData.email}
               onChange={handleInputChange}
-              className={errors.email ? 'border-red-500' : 'bg-white'}
+              className={errors.email ? 'border-maroon-500' : 'bg-white'}
               required
             />
-            {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
+            {errors.email && <p className="text-maroon-500 text-sm mt-1">{errors.email}</p>}
           </div>
 
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">Password</label>
             <Input
-              type="text"
-              name="company"
-              placeholder="Your Company"
-              value={formData.company}
+              type="password"
+              name="password"
+              placeholder="Create a password"
+              value={formData.password}
               onChange={handleInputChange}
-              className={errors.company ? 'border-red-500' : 'bg-white'}
+              className={errors.password ? 'border-maroon-500' : 'bg-white'}
               required
             />
-            {errors.company && <p className="text-red-500 text-sm mt-1">{errors.company}</p>}
+            {errors.password && <p className="text-maroon-500 text-sm mt-1">{errors.password}</p>}
           </div>
 
           <div className="flex items-center space-x-2">
@@ -179,7 +239,7 @@ export function SignupForm({ isLandingPage }: { isLandingPage?: boolean }) {
               I agree to the Terms of Service and Privacy Policy
             </label>
           </div>
-          {errors.agreeToTerms && <p className="text-red-500 text-sm">{errors.agreeToTerms}</p>}
+          {errors.agreeToTerms && <p className="text-maroon-500 text-sm">{errors.agreeToTerms}</p>}
 
           <Button
             type="submit"
@@ -206,15 +266,6 @@ export function SignupForm({ isLandingPage }: { isLandingPage?: boolean }) {
           </div>
         </form>
       </div>
-      {/* <AuthenticationForm
-        email={email}
-        onEmailChange={(email) => setEmail(email)}
-        password={password}
-        onPasswordChange={(password) => setPassword(password)}
-      />
-      <Button formAction={() => handleSignup()} type={'submit'} variant={'secondary'} className={'w-full'}>
-        Sign up
-      </Button> */}
     </div>
   );
 }

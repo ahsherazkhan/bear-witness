@@ -12,7 +12,7 @@ export function DashboardPageHeader({ pageTitle }: Props) {
         <MobileSidebar />
         <h1 className="text-lg font-semibold md:text-4xl">{pageTitle}</h1>
       </div>
-      <Separator className={'relative bg-border my-8 dashboard-header-highlight'} />
+      <Separator className={'relative bg-border my-8'} />
     </div>
   );
 }

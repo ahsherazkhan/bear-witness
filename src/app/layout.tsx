@@ -4,6 +4,7 @@ import '../styles/layout.css';
 import { ReactNode } from 'react';
 import type { Metadata } from 'next';
 import { Toaster } from '@/components/ui/toaster';
+import AuthHandler from '@/components/auth/auth-handler';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -32,6 +33,7 @@ export default function RootLayout({
             backgroundRepeat: 'repeat',
           }}
         >
+          <AuthHandler />
           {children}
           <Toaster />
         </body>

@@ -77,10 +77,9 @@ export function CheckoutContents({ userEmail }: Props) {
   return (
     <div
       className={
-        'rounded-lg md:bg-background/80 md:backdrop-blur-[24px] md:p-10 md:pl-16 md:pt-16 md:min-h-[400px] flex flex-col justify-between relative'
+        'rounded-lg bg-black md:backdrop-blur-[24px] md:p-10 md:pl-16 md:pt-16 md:min-h-[400px] flex flex-col justify-between relative'
       }
     >
-      <CheckoutFormGradients />
       <div className={'flex flex-col md:flex-row gap-8 md:gap-16'}>
         <div className={'w-full md:w-[400px]'}>
           <PriceSection checkoutData={checkoutData} quantity={quantity} handleQuantityChange={setQuantity} />

@@ -14,7 +14,7 @@ interface Props {
 export function PriceSection({ checkoutData, handleQuantityChange, quantity }: Props) {
   return (
     <>
-      <div className={'hidden md:block'}>
+      <div>
         <CheckoutPriceContainer checkoutData={checkoutData} />
         <CheckoutLineItems
           handleQuantityChange={handleQuantityChange}

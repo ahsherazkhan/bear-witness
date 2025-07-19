@@ -29,7 +29,6 @@ export function HomePage() {
   return (
     <>
       <div>
-        <HomePageBackground />
         <Header />
         {/* Landing Page Components */}
         <HeroSection />
@@ -43,7 +42,7 @@ export function HomePage() {
 
         {/* Original Pricing Section */}
         <Pricing country={country} />
-        <TrialSignupSection />
+        {!user && <TrialSignupSection />}
 
         {/* Landing Page Footer */}
         <LandingFooter />

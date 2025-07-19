@@ -4,15 +4,23 @@ import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ArrowRight, Shield, Clock } from 'lucide-react';
+import { createClient } from '@/utils/supabase/client';
+import { useRouter } from 'next/navigation';
+import { useToast } from '@/components/ui/use-toast';
 
 const SignupForm = () => {
+  const router = useRouter();
+  const supabase = createClient();
+  const { toast } = useToast();
+
   const [formData, setFormData] = useState({
-    fullName: '',
+    username: '',
     email: '',
-    company: '',
+    password: '',
     agreeToTerms: false,
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -34,8 +42,10 @@ const SignupForm = () => {
   const validateForm = () => {
     const newErrors: { [key: string]: string } = {};
 
-    if (!formData.fullName.trim()) {
-      newErrors.fullName = 'Full name is required';
+    if (!formData.username.trim()) {
+      newErrors.username = 'Username is required';
+    } else if (formData.username.length < 3) {
+      newErrors.username = 'Username must be at least 3 characters';
     }
 
     if (!formData.email.trim()) {
@@ -44,8 +54,10 @@ const SignupForm = () => {
       newErrors.email = 'Please enter a valid email address';
     }
 
-    if (!formData.company.trim()) {
-      newErrors.company = 'Company name is required';
+    if (!formData.password.trim()) {
+      newErrors.password = 'Password is required';
+    } else if (formData.password.length < 6) {
+      newErrors.password = 'Password must be at least 6 characters';
     }
 
     if (!formData.agreeToTerms) {
@@ -56,6 +68,7 @@ const SignupForm = () => {
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
+    console.log('handleSubmit>>>>>>>>>>>>>>>>>>>');
     e.preventDefault();
 
     const newErrors = validateForm();
@@ -66,16 +79,76 @@ const SignupForm = () => {
 
     setIsSubmitting(true);
 
-    // Simulate API call
     try {
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-      // Handle success
+      // Create user account with Supabase
+      const { data, error } = await supabase.auth.signUp({
+        email: formData.email,
+        password: formData.password,
+        options: {
+          data: {
+            username: formData.username,
+          },
+        },
+      });
+
+      console.log('data>>>>>>>>>>>>>>>>>>>', data);
+      console.log('error>>>>>>>>>>>>>>>>>>>', error);
+
+      if (error) {
+        console.error('Signup error:', error);
+        toast({
+          description: error.message || 'Something went wrong. Please try again.',
+          variant: 'destructive',
+        });
+        return;
+      }
+
+      if (data.user) {
+        setIsSuccess(true);
+        toast({
+          description:
+            'Account created successfully! Please check your email and click the confirmation link to verify your account.',
+          variant: 'default',
+        });
+
+        // Redirect to dashboard after a short delay
+        setTimeout(() => {
+          router.push('/dashboard');
+        }, 2000);
+      }
     } catch (error) {
       console.error('Signup error:', error);
+      toast({
+        description: 'Something went wrong. Please try again.',
+        variant: 'destructive',
+      });
     } finally {
       setIsSubmitting(false);
     }
   };
+
+  if (isSuccess) {
+    return (
+      <div className="bg-white rounded-lg p-8 border border-gray-200 text-center">
+        <div className="w-20 h-20 bg-black rounded-full flex items-center justify-center mx-auto mb-6">
+          <Shield size={40} className="text-white" />
+        </div>
+        <h2 className="text-3xl font-bold text-gray-900 mb-4">Welcome to Bear Witness!</h2>
+        <p className="text-xl text-gray-600 mb-8">
+          Your account has been created successfully. Check your email for verification.
+        </p>
+        <Button
+          variant="default"
+          size="lg"
+          className="bg-black hover:bg-gray-800 text-white"
+          onClick={() => router.push('/dashboard')}
+        >
+          Go to Dashboard
+          <ArrowRight className="ml-2 h-4 w-4" />
+        </Button>
+      </div>
+    );
+  }
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
@@ -85,31 +158,45 @@ const SignupForm = () => {
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+        <label className="block text-sm font-medium text-gray-700 mb-2">Username</label>
         <Input
           type="text"
-          name="fullName"
-          placeholder="John Smith"
-          value={formData.fullName}
+          name="username"
+          placeholder="Choose a username"
+          value={formData.username}
           onChange={handleInputChange}
-          className={errors.fullName ? 'border-red-500' : 'bg-white'}
+          className={errors.username ? 'border-maroon-500' : 'bg-white'}
           required
         />
-        {errors.fullName && <p className="text-red-500 text-sm mt-1">{errors.fullName}</p>}
+        {errors.username && <p className="text-maroon-500 text-sm mt-1">{errors.username}</p>}
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-2">Work Email</label>
+        <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
         <Input
           type="email"
           name="email"
-          placeholder="john@company.com"
+          placeholder="your@email.com"
           value={formData.email}
           onChange={handleInputChange}
-          className={errors.email ? 'border-red-500' : 'bg-white'}
+          className={errors.email ? 'border-maroon-500' : 'bg-white'}
           required
         />
-        {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
+        {errors.email && <p className="text-maroon-500 text-sm mt-1">{errors.email}</p>}
+      </div>
+
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-2">Password</label>
+        <Input
+          type="password"
+          name="password"
+          placeholder="Create a password"
+          value={formData.password}
+          onChange={handleInputChange}
+          className={errors.password ? 'border-maroon-500' : 'bg-white'}
+          required
+        />
+        {errors.password && <p className="text-maroon-500 text-sm mt-1">{errors.password}</p>}
       </div>
 
       <div className="flex items-center space-x-2">
@@ -130,7 +217,7 @@ const SignupForm = () => {
           I agree to the Terms of Service and Privacy Policy
         </label>
       </div>
-      {errors.agreeToTerms && <p className="text-red-500 text-sm">{errors.agreeToTerms}</p>}
+      {errors.agreeToTerms && <p className="text-maroon-500 text-sm">{errors.agreeToTerms}</p>}
 
       <Button
         type="submit"
