@@ -6,6 +6,9 @@ import type { Metadata } from 'next';
 import { Toaster } from '@/components/ui/toaster';
 import AuthHandler from '@/components/auth/auth-handler';
 
+// Force dynamic rendering to prevent static generation issues
+export const dynamic = 'force-dynamic';
+
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
