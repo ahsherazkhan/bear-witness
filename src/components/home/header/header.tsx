@@ -27,7 +27,7 @@ const Header = () => {
     { label: 'Benefits', anchor: 'benefits', priority: 2 },
     { label: 'Analytics', anchor: 'stats', priority: 3 },
     { label: 'Pricing', anchor: 'pricing', priority: 4 },
-    ...(user ? [{ label: 'Dashboard', href: '/dashboard', priority: 5 }] : []),
+    ...(user ? [{ label: 'Dashboard', href: '/dashboard/subscriptions', priority: 5 }] : []),
     ...(!user ? [{ label: 'Start Trial', anchor: 'trial-signup', priority: 5 }] : []),
   ] as Array<{ label: string; anchor?: string; href?: string; priority: number }>;
 
@@ -150,7 +150,7 @@ const Header = () => {
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end" className="w-48">
-                  <DropdownMenuItem onClick={() => router.push('/dashboard')}>Dashboard</DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => router.push('/dashboard/subscriptions')}>Dashboard</DropdownMenuItem>
                   {/* <DropdownMenuItem onClick={() => router.push('/dashboard/profile')}>
                     Profile Settings
                   </DropdownMenuItem> */}
@@ -204,14 +204,14 @@ const Header = () => {
               <div className="pt-4 border-t border-gray-200 space-y-3">
                 {user ? (
                   <>
-                    <Button
+                    {/* <Button
                       variant="outline"
                       onClick={() => router.push('/dashboard')}
                       className="w-full border-black text-black hover:bg-gradient-to-r hover:from-black hover:to-gray-800 hover:text-white"
                     >
                       Dashboard
                       <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
+                    </Button> */}
                     <Button
                       variant="outline"
                       onClick={handleSignOut}

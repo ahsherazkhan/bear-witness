@@ -34,11 +34,11 @@ const Footer = () => {
                   Pricing
                 </a>
               </li>
-              <li>
+              {/* <li>
                 <a href="#" className="hover:text-white">
                   API
                 </a>
-              </li>
+              </li> */}
               <li>
                 <a href="#" className="hover:text-white">
                   Security
@@ -51,26 +51,31 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold mb-4">Support</h4>
             <ul className="space-y-2 text-sm text-gray-400">
-              <li>
+              {/* <li>
                 <a href="#" className="hover:text-white">
                   Help Center
                 </a>
-              </li>
+              </li> */}
               <li>
-                <a href="#" className="hover:text-white">
-                  Contact
+                <a href="mailto:talktobearwitness@gmail.com" className="hover:text-white">
+                  Contact Us
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-white">
+                <a
+                  href="https://www.termsfeed.com/live/cd3de457-2b00-4e5f-8b9f-6d07c9d6c7a5"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white"
+                >
                   Privacy Policy
                 </a>
               </li>
-              <li>
+              {/* <li>
                 <a href="#" className="hover:text-white">
                   Terms of Service
                 </a>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>

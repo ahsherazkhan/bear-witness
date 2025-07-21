@@ -1,11 +1,6 @@
-import { DashboardPageHeader } from '@/components/dashboard/layout/dashboard-page-header';
-import { DashboardLandingPage } from '@/components/dashboard/landing/dashboard-landing-page';
+import { redirect } from 'next/navigation';
 
-export default function LandingPage() {
-  return (
-    <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-8 h-full overflow-auto">
-      <DashboardPageHeader pageTitle={'Dashboard'} />
-      <DashboardLandingPage />
-    </main>
-  );
+export default function DashboardRedirect() {
+  redirect('/dashboard/subscriptions');
+  return null;
 }

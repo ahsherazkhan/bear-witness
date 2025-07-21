@@ -109,7 +109,7 @@ export default function LoginPage() {
         });
 
         // Redirect to dashboard
-        router.push('/dashboard');
+        router.push('/dashboard/subscriptions');
       }
     } catch (error) {
       console.error('Login error:', error);

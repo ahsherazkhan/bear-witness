@@ -29,7 +29,12 @@ export function PoweredByPaddle() {
               <ArrowUpRight className={'h-4 w-4'} />
             </span>
           </Link>
-          <Link className={'text-sm leading-[14px]'} href={'https://www.paddle.com/legal/privacy'} target={'_blank'}>
+          <Link
+            className={'text-sm leading-[14px]'}
+            href={'https://www.termsfeed.com/live/cd3de457-2b00-4e5f-8b9f-6d07c9d6c7a5'}
+            target={'_blank'}
+            rel={'noopener noreferrer'}
+          >
             <span className={'flex items-center gap-1'}>
               Privacy
               <ArrowUpRight className={'h-4 w-4'} />

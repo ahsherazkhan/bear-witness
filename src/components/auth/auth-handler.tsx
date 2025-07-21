@@ -30,7 +30,7 @@ export default function AuthHandler() {
               window.history.replaceState({}, document.title, window.location.pathname);
 
               // Redirect to dashboard
-              router.push('/dashboard');
+              router.push('/dashboard/subscriptions');
             } else {
               console.error('Error setting session:', error);
               router.push('/login');

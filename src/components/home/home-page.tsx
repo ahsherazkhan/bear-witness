@@ -20,6 +20,7 @@ import StatsSection from '@/components/home/landing-page/components/StatsSection
 import TestimonialsSection from '@/components/home/landing-page/components/TestimonialsSection';
 import PricingSection from '@/components/home/landing-page/components/PricingSection';
 import TrialSignupSection from '@/components/home/landing-page/components/TrialSignupSection';
+import HowItWorksSection from '@/components/home/landing-page/components/HowItWorksSection';
 
 export function HomePage() {
   const supabase = createClient();
@@ -32,9 +33,10 @@ export function HomePage() {
         <Header />
         {/* Landing Page Components */}
         <HeroSection />
+        <HowItWorksSection />
         {/* <ProblemSection /> */}
         <WhyStatsSection />
-        <InfoSection />
+        {/* <InfoSection /> */}
         <StatsSection />
         <TestimonialsSection />
         {/* <PricingSection /> */}
