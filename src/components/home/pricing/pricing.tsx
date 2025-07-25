@@ -29,7 +29,7 @@ export function Pricing({ country }: Props) {
   }, []);
 
   return (
-    <section id="pricing" className="py-20 bg-gradient-to-b from-gray-100 to-white">
+    <section id="pricing" className="py-10 bg-gradient-to-b from-gray-100 to-white">
       <div className="mx-auto max-w-7xl relative px-[32px] flex flex-col items-center justify-between">
         <Toggle frequency={frequency} setFrequency={setFrequency} />
         <PriceCards frequency={frequency} loading={loading} priceMap={prices} />

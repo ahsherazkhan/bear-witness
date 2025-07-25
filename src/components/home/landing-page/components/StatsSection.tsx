@@ -70,8 +70,8 @@ const StatsSection = () => {
   const performanceData = [
     { name: 'Response Time', value: 2.3, unit: 'seconds', color: '#1E40AF' },
     { name: 'Uptime', value: 99.9, unit: '%', color: '#059669' },
-    { name: 'Throughput', value: 1200, unit: 'req/min', color: '#DC2626' },
-    { name: 'Error Rate', value: 0.05, unit: '%', color: '#7C3AED' },
+    { name: 'Throughput', value: 1100, unit: 'req/min', color: '#DC2626' },
+    { name: 'Error Rate', value: 19.05, unit: '%', color: '#7C3AED' },
   ];
 
   const pieColors = ['#1E40AF', '#059669', '#DC2626', '#F59E0B'];
@@ -132,7 +132,7 @@ const StatsSection = () => {
   };
 
   return (
-    <section id="stats" className="py-20">
+    <section id="stats" className="py-20 bg-gradient-to-b from-white to-gray-100">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
@@ -153,7 +153,7 @@ const StatsSection = () => {
           <StatCard
             icon={Target}
             title="Detection Accuracy"
-            value="99.5%"
+            value="92.5%"
             subtitle="Current accuracy rate"
             trend={{ direction: 'up', value: '+2.1%' }}
             color="muted"
@@ -161,7 +161,7 @@ const StatsSection = () => {
           <StatCard
             icon={Zap}
             title="Response Time"
-            value="2.3s"
+            value="1.7s"
             subtitle="Average analysis time"
             trend={{ direction: 'down', value: '-15%' }}
             color="muted"
@@ -169,7 +169,7 @@ const StatsSection = () => {
           <StatCard
             icon={Users}
             title="Active Users"
-            value="15,247"
+            value="1524"
             subtitle="Monthly active users"
             trend={{ direction: 'up', value: '+12.5%' }}
             color="muted"
@@ -177,7 +177,7 @@ const StatsSection = () => {
           <StatCard
             icon={Shield}
             title="Content Analyzed"
-            value="2.4M"
+            value="200K"
             subtitle="This month"
             trend={{ direction: 'up', value: '+28%' }}
             color="muted"
@@ -199,12 +199,12 @@ const StatsSection = () => {
               isActive={activeTab === 'detections'}
               onClick={setActiveTab}
             />
-            <TabButton
+            {/* <TabButton
               id="performance"
               label="Performance"
               isActive={activeTab === 'performance'}
               onClick={setActiveTab}
-            />
+            /> */}
           </div>
         </div>
 

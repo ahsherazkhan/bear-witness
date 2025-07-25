@@ -42,13 +42,14 @@ const TrialSignupSection = () => {
   }
 
   return (
-    <section id="trial-signup" className="py-20 bg-gray-50">
-      <div className="max-w-6xl mx-auto px-4">
+    <section id="trial-signup" className="py-20 bg-gradient-to-b from-white to-gray-100">
+      <hr className="border-gray-200" />
+      <div className="max-w-6xl mx-auto px-4 mt-9">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Start Your Free Trial</h2>
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">Try Bear Witness for free</h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Join thousands of teams using Bear Witness to create amazing content. No credit card required, start
-            creating in seconds.
+            Join thousands of users making their feeds more authentic. No credit card needed start detecting AI content
+            instantly.
           </p>
         </div>
 
@@ -56,21 +57,30 @@ const TrialSignupSection = () => {
           {/* Benefits Section */}
           <div className="space-y-8">
             <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Why Choose Bear Witness?</h3>
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">Why Bear Witness?</h3>
               <div className="space-y-6">
-                {benefits.map((benefit, index) => (
-                  <div key={index} className="flex items-start space-x-4">
-                    <div className="flex-shrink-0">
-                      <div className="w-12 h-12 bg-black rounded-lg flex items-center justify-center">
-                        <benefit.icon className="h-6 w-6 text-white" />
-                      </div>
-                    </div>
-                    <div>
-                      <h4 className="text-lg font-semibold text-gray-900 mb-2">{benefit.title}</h4>
-                      <p className="text-gray-600">{benefit.description}</p>
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0">
+                    <div className="w-12 h-12 bg-black rounded-lg flex items-center justify-center">
+                      <CreditCard className="h-6 w-6 text-white" />
                     </div>
                   </div>
-                ))}
+                  <div>
+                    <h4 className="text-lg font-semibold text-gray-900 mb-2">No Credit Card Required</h4>
+                    <p className="text-gray-600">Start immediately</p>
+                  </div>
+                </div>
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0">
+                    <div className="w-12 h-12 bg-black rounded-lg flex items-center justify-center">
+                      <BarChart3 className="h-6 w-6 text-white" />
+                    </div>
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-semibold text-gray-900 mb-2">Scan 500 posts/month for free</h4>
+                    <p className="text-gray-600">Test with real content</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

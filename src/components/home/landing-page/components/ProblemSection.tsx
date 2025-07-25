@@ -79,34 +79,49 @@ const ProblemSection = () => {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold text-black mb-6">
-            The AI Content Crisis is
-            <span className="text-maroon-500"> Real & Growing</span>
-          </h2>
+          <h2 className="text-3xl md:text-5xl font-bold text-black mb-6">AI Content Is Flooding Social Media</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Every day, thousands of brands fall victim to AI-generated content that damages their reputation, misleads
-            their audience, and costs millions in recovery efforts.
+            Fake and AI-generated posts are everywhere making it harder to know what’s real. Bear Witness helps you
+            filter out the noise and keep your feed authentic.
           </p>
         </div>
 
         {/* Animated Statistics */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          {problemStats.map((stat, index) => {
-            const IconComponent = stat.icon;
-            return (
-              <div key={index} className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
-                <div className="flex items-center justify-center mb-4">
-                  <div className={`w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center ${stat.color}`}>
-                    <IconComponent size={32} />
-                  </div>
-                </div>
-                <div className="text-center">
-                  <div className={`text-4xl font-bold mb-2 ${stat.color}`}>{stat.stat}</div>
-                  <p className="text-gray-600 leading-relaxed">{stat.description}</p>
-                </div>
+          {/* Example stats, update as needed */}
+          <div className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+            <div className="flex items-center justify-center mb-4">
+              <div className="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center text-maroon-500">
+                <TrendingUp size={32} />
               </div>
-            );
-          })}
+            </div>
+            <div className="text-center">
+              <div className="text-4xl font-bold mb-2 text-maroon-500">847%</div>
+              <p className="text-gray-600 leading-relaxed">Increase in AI-generated posts (2024)</p>
+            </div>
+          </div>
+          <div className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+            <div className="flex items-center justify-center mb-4">
+              <div className="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center text-black-500">
+                <Users size={32} />
+              </div>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl font-bold mb-2 text-black-500">34%</div>
+              <p className="text-gray-600 leading-relaxed">Of social engagement is from AI content</p>
+            </div>
+          </div>
+          <div className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+            <div className="flex items-center justify-center mb-4">
+              <div className="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center text-orange-500">
+                <DollarSign size={32} />
+              </div>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl font-bold mb-2 text-orange-500">$2.3M</div>
+              <p className="text-gray-600 leading-relaxed">Average brand damage from fake content</p>
+            </div>
+          </div>
         </div>
 
         {/* Brand Damage Case Studies */}

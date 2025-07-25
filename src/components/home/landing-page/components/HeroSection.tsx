@@ -27,7 +27,7 @@ const HeroSection = () => {
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-20">
         <div className="text-center">
           {/* Bear Logo */}
-          <div className="mb-8 flex justify-center">
+          <div className="flex justify-center my-10">
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 rounded-full blur-xl opacity-30"></div>
               <img
@@ -40,16 +40,15 @@ const HeroSection = () => {
 
           {/* Headline */}
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-black mb-6 leading-tight">
-            Sick of Ai Content?
+            Detect AI Content Instantly
             <br />
-            <span className="text-gray-600">We can bear the witness!!</span>
           </h1>
 
           {/* Subheadline */}
-          <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Stop fake content from wasting your time.
+          <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed mt-15">
+            Bear Witness reveals how much of your feed is AI-generated.
             <br />
-            <span className="text-black font-semibold">99.5% accuracy in under 2 seconds.</span>
+            <span className="text-black font-semibold">See the percentage of AI in every post and blur the noise</span>
           </p>
 
           {/* Primary CTAs */}
@@ -57,10 +56,13 @@ const HeroSection = () => {
             <Button
               variant="default"
               size="lg"
-              onClick={scrollToTrial}
+              onClick={() =>
+                (window.location.href =
+                  'https://chromewebstore.google.com/detail/bear-witness/achoaangannjppfhglcainjfociamhah?hl=en')
+              }
               className="font-semibold px-8 py-4 text-lg text-white bg-black hover:bg-red-900"
             >
-              Start Free Trial
+              Install Extension
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
             <Button
@@ -70,7 +72,7 @@ const HeroSection = () => {
               className="border-red-900 text-red-900 hover:bg-red-900 hover:text-white font-semibold px-8 py-4 text-lg"
             >
               <ChevronDown className="mr-2 h-5 w-5" />
-              Live Demo
+              Watch Demo
             </Button>
           </div>
 
@@ -82,7 +84,7 @@ const HeroSection = () => {
                   <Target className="h-6 w-6 text-red-900" />
                 </div>
               </div>
-              <div className="text-2xl font-bold text-black mb-1">99.5%</div>
+              <div className="text-2xl font-bold text-black mb-1">92.5%</div>
               <div className="text-gray-600 text-sm">Detection Accuracy</div>
             </div>
 

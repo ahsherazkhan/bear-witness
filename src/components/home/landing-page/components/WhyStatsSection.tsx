@@ -78,7 +78,7 @@ const WhyStatsSection = () => {
   }, [isVisible, problemStats.length]);
 
   return (
-    <section id="problem-section" className="py-20">
+    <section id="problem-section" className="py-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -121,7 +121,7 @@ const WhyStatsSection = () => {
         </div>
 
         {/* Call to Action */}
-        <div
+        {/* <div
           className={`text-center mt-16 transform transition-all duration-1000 delay-800 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
         >
           <div className="bg-gray-900 border border-red-200 rounded-2xl p-8 max-w-4xl mx-auto">
@@ -142,7 +142,7 @@ const WhyStatsSection = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );

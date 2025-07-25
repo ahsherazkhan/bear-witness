@@ -6,26 +6,26 @@ const steps = [
   {
     img: '/assets/pice1.png',
     alt: 'Human Content badge',
-    headline: "See What's Real",
-    text: 'Instantly spot human-written posts in your feed. Bear Witness highlights authentic content with a clear confidence score, so you can trust what you read.',
+    headline: 'Spot What’s Real',
+    text: 'Bear Witness highlights human-written posts with a clear badge and confidence score so you know what’s authentic.',
   },
   {
     img: '/assets/pic2.png',
     alt: 'AI Detected badge',
-    headline: "Know When It's AI",
-    text: 'Every post gets a badge showing the percentage of AI-generated content. No more guessing—Bear Witness makes AI detection transparent.',
+    headline: 'See the AI Percentage',
+    text: 'Every post gets a badge showing exactly how much AI-generated content it contains. No more guessing.',
   },
   {
     img: '/assets/pic3.png',
     alt: 'Bear Witness extension popup',
-    headline: "You're in Control",
-    text: 'Toggle AI scanning and blur high-AI posts with a single click. Bear Witness puts you in charge of your social media experience.',
+    headline: 'Take Control of Your Feed',
+    text: 'Toggle AI scanning and choose to blur posts with high AI content. You decide what you want to see.',
   },
   {
     img: '/assets/pic4.png',
     alt: 'Bear Witness blurring high AI content',
-    headline: 'Blur the Noise',
-    text: 'Automatically blur posts that are likely AI-generated. Focus on what matters—real, human content.',
+    headline: 'Blur Out the Bots',
+    text: 'Automatically blur posts that are mostly AI, so you can focus on real conversations.',
   },
 ];
 
@@ -80,10 +80,12 @@ export default function HowItWorksSection() {
               className="min-h-[60vh] flex flex-col justify-start"
             >
               <AnimatePresence mode="wait">
-                <h3 className="text-3xl md:text-5xl font-extrabold text-black mb-6 text-left leading-tight">
-                  {step.headline}
-                </h3>
-                <p className="text-xl md:text-2xl text-gray-700 text-left">{step.text}</p>
+                <div key={`step-${idx}`}>
+                  <h3 className="text-3xl md:text-5xl font-extrabold text-black mb-6 text-left leading-tight">
+                    {step.headline}
+                  </h3>
+                  <p className="text-xl md:text-2xl text-gray-700 text-left">{step.text}</p>
+                </div>
               </AnimatePresence>
             </div>
           ))}
@@ -116,7 +118,7 @@ export default function HowItWorksSection() {
       </div>
 
       {/* CTA at the bottom */}
-      <div className="text-center py-32">
+      {/* <div className="text-center py-32">
         <a
           href="https://chrome.google.com/webstore"
           target="_blank"
@@ -125,7 +127,7 @@ export default function HowItWorksSection() {
         >
           Install Bear Witness on Chrome
         </a>
-      </div>
+      </div> */}
     </section>
   );
 }

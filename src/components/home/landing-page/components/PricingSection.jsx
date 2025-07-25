@@ -22,37 +22,11 @@ const PricingSection = () => {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold text-black mb-6">Simple Pricing</h2>
+          <h2 className="text-3xl md:text-5xl font-bold text-black mb-6">Simple, Transparent Pricing</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-            Choose the perfect plan for your needs. All plans include our core AI detection technology.
+            All plans include our core AI detection technology. Choose the plan that fits your needs and start filtering
+            your feed today.
           </p>
-
-          {/* Billing Toggle */}
-          <div className="flex items-center justify-center space-x-4 mb-8">
-            <span className={`text-sm font-medium ${billingCycle === 'monthly' ? 'text-black' : 'text-gray-600'}`}>
-              Monthly
-            </span>
-            <button
-              onClick={() => setBillingCycle(billingCycle === 'monthly' ? 'yearly' : 'monthly')}
-              className={`relative w-14 h-7 rounded-full transition-colors duration-200 ${
-                billingCycle === 'yearly' ? 'bg-gradient-to-r from-black to-gray-800' : 'bg-gray-300'
-              }`}
-            >
-              <div
-                className={`absolute top-1 w-5 h-5 bg-white rounded-full transition-transform duration-200 ${
-                  billingCycle === 'yearly' ? 'translate-x-8' : 'translate-x-1'
-                }`}
-              />
-            </button>
-            <span className={`text-sm font-medium ${billingCycle === 'yearly' ? 'text-black' : 'text-gray-600'}`}>
-              Yearly
-            </span>
-            {billingCycle === 'yearly' && (
-              <span className="bg-gradient-to-r from-black to-gray-800 text-white text-xs font-semibold px-2 py-1 rounded-full">
-                Save 20%TrialSi
-              </span>
-            )}
-          </div>
         </div>
 
         {/* Pricing Cards */}

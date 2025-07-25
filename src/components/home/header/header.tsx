@@ -23,12 +23,12 @@ const Header = () => {
   const router = useRouter();
 
   const navigationItems = [
-    { label: 'How it Works', anchor: 'how-it-works', priority: 1 },
-    { label: 'Benefits', anchor: 'benefits', priority: 2 },
-    { label: 'Analytics', anchor: 'stats', priority: 3 },
-    { label: 'Pricing', anchor: 'pricing', priority: 4 },
-    ...(user ? [{ label: 'Dashboard', href: '/dashboard/subscriptions', priority: 5 }] : []),
-    ...(!user ? [{ label: 'Start Trial', anchor: 'trial-signup', priority: 5 }] : []),
+    // { label: 'How it Works', anchor: 'how-it-works', priority: 1 },
+    // { label: 'Benefits', anchor: 'benefits', priority: 2 },
+    { label: 'Analytics', anchor: 'stats', priority: 1 },
+    { label: 'Pricing', anchor: 'pricing', priority: 2 },
+    ...(user ? [{ label: 'Dashboard', href: '/dashboard/subscriptions', priority: 3 }] : []),
+    ...(!user ? [{ label: 'Start Trial', anchor: 'trial-signup', priority: 4 }] : []),
   ] as Array<{ label: string; anchor?: string; href?: string; priority: number }>;
 
   const handleSignOut = async () => {

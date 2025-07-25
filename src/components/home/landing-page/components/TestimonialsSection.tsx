@@ -24,54 +24,54 @@ const TestimonialsSection = () => {
     {
       id: 1,
       name: 'Sarah Chen',
-      role: 'Social Media Manager',
-      company: 'TechFlow Marketing',
+      role: 'Content Creator',
+      company: 'Lifestyle Blogger',
       avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face',
-      content: `Bear Witness AI saved our brand from a major crisis. We detected AI-generated fake reviews within minutes instead of days. The accuracy is incredible - 99.5% detection rate is not just marketing, it's real.`,
+      content: `Bear Witness AI has completely changed how I consume social media. I can instantly spot AI-generated posts and focus on authentic content. My feed is so much more meaningful now!`,
       rating: 5,
       verified: true,
       linkedinUrl: 'https://linkedin.com/in/sarahchen',
-      useCase: 'Brand Protection',
-      resultMetric: 'Prevented $2.3M reputation damage',
+      useCase: 'Personal Feed Filtering',
+      resultMetric: 'Reduced AI content by 85%',
     },
     {
       id: 2,
       name: 'Marcus Rodriguez',
-      role: 'Content Creator',
-      company: 'Digital Nomad Pro',
+      role: 'Freelance Writer',
+      company: 'Digital Content Creator',
       avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
-      content: `As a content creator, authenticity is everything. Bear Witness AI helps me verify collaborations and ensure my audience gets genuine content. The speed is game-changing - results in under 2 seconds!`,
+      content: `As a content writer, I need to stay authentic. Bear Witness helps me verify my own content and avoid AI-generated posts that could influence my writing style. The accuracy is incredible!`,
       rating: 5,
       verified: true,
       linkedinUrl: 'https://linkedin.com/in/marcusrodriguez',
-      useCase: 'Content Verification',
-      resultMetric: 'Verified 10K+ posts monthly',
+      useCase: 'Content Authenticity',
+      resultMetric: 'Verified 500+ posts monthly',
     },
     {
       id: 3,
       name: 'Emily Watson',
-      role: 'Brand Safety Director',
-      company: 'Global Media Corp',
+      role: 'Social Media Influencer',
+      company: 'Fashion & Lifestyle',
       avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face',
-      content: `We've tested multiple AI detection tools, but Bear Witness AI stands out. The platform coverage is comprehensive, and the API integration was seamless. Our team productivity increased by 400%.`,
+      content: `I was getting frustrated with all the fake engagement and AI-generated comments. Bear Witness helps me identify real interactions and maintain genuine connections with my audience.`,
       rating: 5,
       verified: true,
       linkedinUrl: 'https://linkedin.com/in/emilywatson',
-      useCase: 'Enterprise Security',
-      resultMetric: '400% productivity increase',
+      useCase: 'Audience Engagement',
+      resultMetric: 'Improved engagement quality by 60%',
     },
     {
       id: 4,
       name: 'David Kim',
-      role: 'Digital Marketing Lead',
-      company: 'StartupBoost Agency',
+      role: 'Tech Blogger',
+      company: 'Independent Journalist',
       avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face',
-      content: `The ROI is incredible. We prevented multiple fake content incidents that could have cost us millions. Bear Witness AI pays for itself within the first month. Essential tool for any serious brand.`,
+      content: `As a tech blogger, I need to stay ahead of AI trends. Bear Witness helps me understand what's real vs AI-generated, making my content more valuable to readers. Essential tool!`,
       rating: 5,
       verified: true,
       linkedinUrl: 'https://linkedin.com/in/davidkim',
-      useCase: 'ROI Protection',
-      resultMetric: 'ROI: 2,400% in first month',
+      useCase: 'Content Research',
+      resultMetric: 'Improved content accuracy by 90%',
     },
   ];
 
@@ -112,18 +112,14 @@ const TestimonialsSection = () => {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold text-black mb-6">
-            Trusted by
-            <span className="text-gray-600"> Industry Leaders</span>
-          </h2>
+          <h2 className="text-3xl md:text-5xl font-bold text-black mb-6">Trusted by Real Users</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Join thousands of brands, creators, and agencies who trust Bear Witness AI to protect their digital
-            authenticity and reputation.
+            From creators to brands, people rely on Bear Witness to spot AI content and keep their feeds real.
           </p>
         </div>
 
         {/* Success Metrics */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+        {/* <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
           {successMetrics.map((item, index) => {
             const IconComponent = item.icon;
             return (
@@ -136,7 +132,7 @@ const TestimonialsSection = () => {
               </div>
             );
           })}
-        </div>
+        </div> */}
 
         {/* Main Testimonial Carousel */}
         <div className="bg-gradient-to-br from-white to-gray-50 rounded-2xl p-8 md:p-12 border border-gray-200 shadow-sm mb-16">
@@ -160,7 +156,7 @@ const TestimonialsSection = () => {
               <div className="mb-8">
                 <div className="flex justify-center mb-4">
                   {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
-                    <Star key={i} size={24} className="text-gray-300 fill-current" />
+                    <Star key={i} size={24} className="text-yellow-400 fill-current" />
                   ))}
                 </div>
                 <blockquote className="text-xl md:text-2xl text-black leading-relaxed mb-8">
@@ -187,7 +183,7 @@ const TestimonialsSection = () => {
               </div>
 
               {/* Use Case & Results */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl mx-auto">
+              {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl mx-auto">
                 <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg p-4">
                   <div className="text-sm text-gray-600 mb-1">Use Case</div>
                   <div className="font-semibold text-black">{testimonials[currentTestimonial].useCase}</div>
@@ -196,14 +192,14 @@ const TestimonialsSection = () => {
                   <div className="text-sm text-gray-300 mb-1">Result</div>
                   <div className="font-semibold text-white">{testimonials[currentTestimonial].resultMetric}</div>
                 </div>
-              </div>
+              </div> */}
             </div>
 
             {/* Pagination Dots */}
             <div className="flex justify-center space-x-2 mt-8">
-              {testimonials.map((_, index) => (
+              {testimonials.map((testimonial, index) => (
                 <button
-                  key={index}
+                  key={testimonial.id}
                   onClick={() => setCurrentTestimonial(index)}
                   className={`w-3 h-3 rounded-full transition-all ${
                     index === currentTestimonial

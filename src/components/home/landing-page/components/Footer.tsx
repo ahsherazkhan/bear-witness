@@ -17,7 +17,9 @@ const Footer = () => {
               />
               <span className="text-lg font-bold">Bear Witness AI</span>
             </div>
-            <p className="text-gray-400 text-sm">Protecting digital authenticity with AI-powered content detection.</p>
+            <p className="text-gray-400 text-sm">
+              Helping you see what’s real AI detection for your social media feed.
+            </p>
           </div>
 
           {/* Links */}

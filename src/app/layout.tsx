@@ -15,7 +15,12 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://paddle-billing.vercel.app'),
   title: 'Bear Witness',
   description:
-    'Bear Witness is a powerful team design collaboration app and image editor. With plans for businesses of all sizes, streamline your workflow with real-time collaboration, advanced editing tools, and seamless project management.',
+    'Bear Witness AI is a powerful Chrome extension that instantly detects AI-generated content in your social media feeds. Using advanced machine learning with 99.5% accuracy, it helps you distinguish between authentic human posts and AI-generated noise.',
+  icons: {
+    icon: '/assets/logo-1752484296338.png',
+    shortcut: '/assets/logo-1752484296338.png',
+    apple: '/assets/logo-1752484296338.png',
+  },
 };
 
 export default function RootLayout({

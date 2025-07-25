@@ -7,27 +7,25 @@ const InfoSection = () => {
   const steps = [
     {
       number: '01',
-      title: 'Enable Bear Witness extension from chrome store',
-      description:
-        'Simply search for Bear Witness on chrome store and install the extension. We support all major formats including social media posts',
+      title: 'Add Bear Witness to Chrome',
+      description: 'Install the extension in seconds works on all major social media platforms.',
       icon: 'Upload',
-      features: ['Bulk processing', 'API integration', 'Real-time analysis'],
+      features: ['Easy install', 'Works everywhere'],
     },
     {
       number: '02',
-      title: 'AI Analysis Engine',
+      title: 'Scan Your Feed',
       description:
-        'Our proprietary AI engine analyzes your content using advanced machine learning algorithms trained on 50+ AI models to detect patterns and authenticity markers.',
+        'Our AI engine analyzes every post, detecting patterns and showing you the percentage of AI content.',
       icon: 'Cpu',
-      features: ['50+ AI models', 'Pattern recognition', 'Linguistic analysis', 'Behavioral detection'],
+      features: ['AI-powered detection', 'Real-time analysis'],
     },
     {
       number: '03',
-      title: 'Instant Results',
-      description:
-        'Get comprehensive results in under 2 seconds with detailed confidence scores, highlighted suspicious sections, and actionable insights.',
+      title: 'See Results Instantly',
+      description: 'Get a badge on every post with a confidence score and the option to blur high-AI posts.',
       icon: 'Zap',
-      features: ['Sub-2 second results', 'Confidence scoring', 'Detailed reports', 'Actionable insights'],
+      features: ['Instant results', 'Blur AI posts'],
     },
   ];
 

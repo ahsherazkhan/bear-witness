@@ -41,7 +41,7 @@ This starter kit is built with:
 
 - [Vercel account](https://vercel.com/)
 - [Supabase account](https://supabase.com/)
-- [Paddle Billing](https://sandbox-login.paddle.com/signup?utm_source=dx&utm_medium=paddle-nextjs-starter-kit) — sandbox recommended
+- [Paddle Billing](https://sandbox-login.paddle.com/signup?utm_source=dx&utm_medium=paddle-nextjs-starter-kit) sandbox recommended
 
 ## Step-by-step setup
 

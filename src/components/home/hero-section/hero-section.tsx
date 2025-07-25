@@ -8,7 +8,7 @@ export function HeroSection() {
           Simple pricing.
         </h1>
         <p className={'mt-6 text-[18px] leading-[27px] md:text-[20px] md:leading-[30px]'}>
-          Plans for teams of every size — from start-up to enterprise.
+          Plans for teams of every size from start-up to enterprise.
         </p>
       </div>
     </section>
