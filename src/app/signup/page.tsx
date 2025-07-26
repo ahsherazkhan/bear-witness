@@ -3,9 +3,8 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import '../../styles/login.css';
-import { LoginCardGradient } from '@/components/gradients/login-card-gradient';
-import { GhLoginButton } from '@/components/authentication/gh-login-button';
-import { SignupForm } from '@/components/authentication/sign-up-form';
+import { GoogleLoginButton } from '@/components/authentication/google-login-button';
+import { useSearchParams } from 'next/navigation';
 import { Input } from '@/components/ui/input';
 import { CreditCard, BarChart3, ArrowRight, Shield, Clock } from 'lucide-react';
 import { createClient } from '@/utils/supabase/client';
@@ -16,6 +15,8 @@ export default function SignupPage() {
   const router = useRouter();
   const supabase = createClient();
   const { toast } = useToast();
+  const searchParams = useSearchParams();
+  const fromExtension = searchParams.get('from') === 'extension';
 
   const [formData, setFormData] = useState({
     username: '',
@@ -269,7 +270,7 @@ export default function SignupPage() {
                 {isSubmitting ? 'Creating Account...' : 'Start Free Trial'}
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
-              <GhLoginButton label={'Sign up with GitHub'} />
+              <GoogleLoginButton label="Continue with Google" fromExtension={fromExtension} />
               <div className="text-center text-sm text-gray-600">
                 <div className="flex items-center justify-center space-x-4">
                   <div className="flex items-center space-x-1">

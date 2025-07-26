@@ -13,6 +13,7 @@ export function SidebarUserInfo() {
   async function handleLogout(e: MouseEvent) {
     e.preventDefault();
     await supabase.auth.signOut();
+    await fetch('/api/logout', { method: 'POST' });
     location.reload();
   }
 

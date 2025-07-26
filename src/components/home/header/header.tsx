@@ -33,6 +33,7 @@ const Header = () => {
 
   const handleSignOut = async () => {
     await supabase.auth.signOut();
+    await fetch('/api/logout', { method: 'POST' });
     router.push('/');
   };
 
