@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 
 const Footer = () => {
   return (
@@ -64,14 +65,19 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a
-                  href="https://www.termsfeed.com/live/cd3de457-2b00-4e5f-8b9f-6d07c9d6c7a5"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-white"
-                >
+                <Link href="/privacy" className="hover:text-white">
                   Privacy Policy
-                </a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/terms" className="hover:text-white">
+                  Terms of Service
+                </Link>
+              </li>
+              <li>
+                <Link href="/refund" className="hover:text-white">
+                  Refund Policy
+                </Link>
               </li>
               {/* <li>
                 <a href="#" className="hover:text-white">

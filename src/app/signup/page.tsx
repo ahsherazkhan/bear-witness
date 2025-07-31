@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import '../../styles/login.css';
 import { GoogleLoginButton } from '@/components/authentication/google-login-button';
@@ -243,15 +244,14 @@ export default function SignupPage() {
                   className="h-4 w-4 text-black border-gray-300 rounded focus:ring-black focus:ring-2"
                 />
                 <label htmlFor="agreeToTerms" className="text-sm text-gray-700">
-                  I agree to the Terms of Service and{' '}
-                  <a
-                    href="https://www.termsfeed.com/live/cd3de457-2b00-4e5f-8b9f-6d07c9d6c7a5"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="underline"
-                  >
+                  I agree to the{' '}
+                  <Link href="/terms" className="underline">
+                    Terms of Service
+                  </Link>{' '}
+                  and{' '}
+                  <Link href="/privacy" className="underline">
                     Privacy Policy
-                  </a>
+                  </Link>
                 </label>
               </div>
               {errors.agreeToTerms && <p className="text-maroon-500 text-sm">{errors.agreeToTerms}</p>}

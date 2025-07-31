@@ -23,22 +23,14 @@ export function PoweredByPaddle() {
               <ArrowUpRight className={'h-4 w-4'} />
             </span>
           </Link>
-          <Link className={'text-sm leading-[14px]'} href={'https://www.paddle.com/legal/terms'} target={'_blank'}>
-            <span className={'flex items-center gap-1'}>
-              Terms of use
-              <ArrowUpRight className={'h-4 w-4'} />
-            </span>
+          <Link className={'text-sm leading-[14px]'} href={'/terms'}>
+            <span className={'flex items-center gap-1'}>Terms of Service</span>
           </Link>
-          <Link
-            className={'text-sm leading-[14px]'}
-            href={'https://www.termsfeed.com/live/cd3de457-2b00-4e5f-8b9f-6d07c9d6c7a5'}
-            target={'_blank'}
-            rel={'noopener noreferrer'}
-          >
-            <span className={'flex items-center gap-1'}>
-              Privacy
-              <ArrowUpRight className={'h-4 w-4'} />
-            </span>
+          <Link className={'text-sm leading-[14px]'} href={'/privacy'}>
+            <span className={'flex items-center gap-1'}>Privacy Policy</span>
+          </Link>
+          <Link className={'text-sm leading-[14px]'} href={'/refund'}>
+            <span className={'flex items-center gap-1'}>Refund Policy</span>
           </Link>
         </div>
       </div>

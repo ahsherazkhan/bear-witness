@@ -10,6 +10,7 @@ import { Input } from '@/components/ui/input';
 import { CreditCard, BarChart3, ArrowRight, Shield, Clock } from 'lucide-react';
 import { createClient } from '@/utils/supabase/client';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 export function SignupForm({ isLandingPage }: { isLandingPage?: boolean }) {
   const router = useRouter();
@@ -236,7 +237,14 @@ export function SignupForm({ isLandingPage }: { isLandingPage?: boolean }) {
               className="h-4 w-4 text-black border-gray-300 rounded focus:ring-black focus:ring-2"
             />
             <label htmlFor="agreeToTerms" className="text-sm text-gray-700">
-              I agree to the Terms of Service and Privacy Policy
+              I agree to the{' '}
+              <Link href="/terms" className="underline">
+                Terms of Service
+              </Link>{' '}
+              and{' '}
+              <Link href="/privacy" className="underline">
+                Privacy Policy
+              </Link>
             </label>
           </div>
           {errors.agreeToTerms && <p className="text-maroon-500 text-sm">{errors.agreeToTerms}</p>}
