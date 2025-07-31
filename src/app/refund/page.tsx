@@ -10,23 +10,27 @@ export default function RefundPolicyPage() {
       <p className="text-sm text-gray-500 mb-8">Last updated: July 30, 2025</p>
 
       <p className="mb-4">
-        Thank you for purchasing the <strong>Bear Witness</strong> browser extension.
+        We offer a <strong>14-day refund window</strong> on all purchases made through our site.
       </p>
 
       <p className="mb-4">
-        Please note that we do <strong>not offer refunds</strong> for digital products, including our extension. Once
-        access is granted, the sale is final.
+        If you’re not happy with something or it’s not working the way it should, email us within 14 days of buying.
+        We’ll take a look and process a refund if it makes sense.
       </p>
 
-      <p className="mb-4">We encourage users to review our product features and website carefully before purchasing.</p>
-
       <p className="mb-4">
-        If you experience any technical issues, please contact us at{' '}
+        Send your request to{' '}
         <a href="mailto:talktobearwitness@gmail.com" className="text-blue-600 hover:underline">
           talktobearwitness@gmail.com
-        </a>
-        , and we’ll do our best to help.
+        </a>{' '}
+        with your order info.
       </p>
+
+      <p className="mb-4">
+        After 14 days, we normally don’t offer refunds unless there’s a technical problem we can’t fix.
+      </p>
+
+      <p className="mb-4">This policy applies to all digital products sold directly through our site.</p>
 
       <p className="mt-8 font-semibold">Bear Witness</p>
     </main>
