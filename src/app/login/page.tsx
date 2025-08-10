@@ -11,6 +11,7 @@ import { CreditCard, BarChart3, ArrowRight, Shield, Clock, Mail } from 'lucide-r
 import { createClient } from '@/utils/supabase/client';
 import { useRouter } from 'next/navigation';
 import { useToast } from '@/components/ui/use-toast';
+import { DebugEnv } from '@/components/debug-env';
 
 export default function LoginPage() {
   const router = useRouter();
@@ -76,13 +77,23 @@ export default function LoginPage() {
     setIsSubmitting(true);
 
     try {
+      // Debug: Log environment variables and Supabase config
+      console.log('=== LOGIN DEBUG ===');
+      console.log('Supabase URL:', process.env.NEXT_PUBLIC_SUPABASE_URL);
+      console.log('Supabase Anon Key:', process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ? 'SET' : 'NOT SET');
+      console.log('Login attempt with:', { email: formData.email, passwordLength: formData.password.length });
+      console.log('Supabase client:', supabase);
+
       // Sign in user with Supabase
       const { data, error } = await supabase.auth.signInWithPassword({
         email: formData.email,
         password: formData.password,
       });
 
+      console.log('Supabase response:', { data, error });
+
       if (error) {
+        console.error('Supabase auth error:', error);
         let errorMessage = 'Invalid email or password. Please try again.';
         let showResendButton = false;
 
@@ -107,6 +118,7 @@ export default function LoginPage() {
       }
 
       if (data.user) {
+        console.log('✅ Login successful:', data.user);
         toast({
           description: 'Login successful! Redirecting to dashboard...',
           variant: 'default',
@@ -336,6 +348,7 @@ export default function LoginPage() {
     <div className="min-h-screen bg-black">
       <div className={'flex flex-col'}>
         <div className={'px-6 md:px-16 py-20 gap-6 flex flex-col items-center justify-center'}>
+          <DebugEnv />
           <div className="bg-white rounded-lg p-8 border border-gray-200">
             <form onSubmit={handleSubmit} className="space-y-6">
               <Image
