@@ -91,9 +91,9 @@ export async function getSubscription(subscriptionId: string): Promise<Subscript
                 (() => {
                   const amountMap: { [key: string]: { [key: string]: string } } = {
                     'Free Plan': { monthly: '0.00', yearly: '0.00' },
-                    'Starter Plan': { monthly: '29.00', yearly: '24.00' },
-                    'Pro Plan': { monthly: '79.00', yearly: '99.00' },
-                    'Unknown Plan': { monthly: '79.00', yearly: '99.00' },
+                    'Starter Plan': { monthly: '10.00', yearly: '99.00' },
+                    'Pro Plan': { monthly: '20.00', yearly: '199.00' },
+                    'Unknown Plan': { monthly: '20.00', yearly: '199.00' },
                   };
                   return amountMap[subscription.plan_name]?.[subscription.billing_cycle] || '0.00';
                 })(),
@@ -105,9 +105,9 @@ export async function getSubscription(subscriptionId: string): Promise<Subscript
                 (() => {
                   const amountMap: { [key: string]: { [key: string]: string } } = {
                     'Free Plan': { monthly: '0.00', yearly: '0.00' },
-                    'Starter Plan': { monthly: '29.00', yearly: '24.00' },
-                    'Pro Plan': { monthly: '79.00', yearly: '99.00' },
-                    'Unknown Plan': { monthly: '79.00', yearly: '99.00' },
+                    'Starter Plan': { monthly: '10.00', yearly: '99.00' },
+                    'Pro Plan': { monthly: '20.00', yearly: '199.00' },
+                    // 'Unknown Plan': { monthly: '79.00', yearly: '99.00' },
                   };
                   return amountMap[subscription.plan_name]?.[subscription.billing_cycle] || '0.00';
                 })(),
@@ -130,9 +130,9 @@ export async function getSubscription(subscriptionId: string): Promise<Subscript
                     (() => {
                       const amountMap: { [key: string]: { [key: string]: string } } = {
                         'Free Plan': { monthly: '0.00', yearly: '0.00' },
-                        'Starter Plan': { monthly: '29.00', yearly: '24.00' },
-                        'Pro Plan': { monthly: '79.00', yearly: '99.00' },
-                        'Unknown Plan': { monthly: '79.00', yearly: '99.00' },
+                        'Starter Plan': { monthly: '10.00', yearly: '99.00' },
+                        'Pro Plan': { monthly: '20.00', yearly: '199.00' },
+                        // 'Unknown Plan': { monthly: '79.00', yearly: '99.00' },
                       };
                       return amountMap[subscription.plan_name]?.[subscription.billing_cycle] || '0.00';
                     })(),
@@ -144,9 +144,9 @@ export async function getSubscription(subscriptionId: string): Promise<Subscript
                     (() => {
                       const amountMap: { [key: string]: { [key: string]: string } } = {
                         'Free Plan': { monthly: '0.00', yearly: '0.00' },
-                        'Starter Plan': { monthly: '29.00', yearly: '24.00' },
-                        'Pro Plan': { monthly: '79.00', yearly: '99.00' },
-                        'Unknown Plan': { monthly: '79.00', yearly: '99.00' },
+                        'Starter Plan': { monthly: '10.00', yearly: '99.00' },
+                        'Pro Plan': { monthly: '20.00', yearly: '199.00' },
+                        // 'Unknown Plan': { monthly: '79.00', yearly: '99.00' },
                       };
                       return amountMap[subscription.plan_name]?.[subscription.billing_cycle] || '0.00';
                     })(),
@@ -164,9 +164,9 @@ export async function getSubscription(subscriptionId: string): Promise<Subscript
                 amount: (() => {
                   const amountMap: { [key: string]: { [key: string]: string } } = {
                     'Free Plan': { monthly: '0.00', yearly: '0.00' },
-                    'Starter Plan': { monthly: '29.00', yearly: '24.00' },
-                    'Pro Plan': { monthly: '79.00', yearly: '99.00' },
-                    'Unknown Plan': { monthly: '79.00', yearly: '99.00' },
+                    'Starter Plan': { monthly: '10.00', yearly: '99.00' },
+                    'Pro Plan': { monthly: '20.00', yearly: '199.00' },
+                    // 'Unknown Plan': { monthly: '79.00', yearly: '99.00' },
                   };
                   return amountMap[subscription.plan_name]?.[subscription.billing_cycle] || '0.00';
                 })(),

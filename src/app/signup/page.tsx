@@ -87,7 +87,6 @@ export default function SignupPage() {
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    console.log('handleSubmit>>>>>>>>>>>>>>>>>>>');
     e.preventDefault();
 
     const newErrors = validateForm();
@@ -109,9 +108,6 @@ export default function SignupPage() {
           },
         },
       });
-
-      console.log('data>>>>>>>>>>>>>>>>>>>', data);
-      console.log('error>>>>>>>>>>>>>>>>>>>', error);
 
       if (error) {
         console.error('Signup error:', error);
@@ -262,10 +258,6 @@ export default function SignupPage() {
                 size="lg"
                 disabled={isSubmitting}
                 className="w-full bg-black hover:bg-gray-800 text-white font-semibold"
-                onClick={() => {
-                  console.log('Button clicked>>>>>>>>>>>>>>>>>>>');
-                  console.log('Form data:', formData);
-                }}
               >
                 {isSubmitting ? 'Creating Account...' : 'Start Free Trial'}
                 <ArrowRight className="ml-2 h-4 w-4" />

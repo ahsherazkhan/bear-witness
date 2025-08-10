@@ -69,7 +69,6 @@ const SignupForm = () => {
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    console.log('handleSubmit>>>>>>>>>>>>>>>>>>>');
     e.preventDefault();
 
     const newErrors = validateForm();
@@ -91,9 +90,6 @@ const SignupForm = () => {
           },
         },
       });
-
-      console.log('data>>>>>>>>>>>>>>>>>>>', data);
-      console.log('error>>>>>>>>>>>>>>>>>>>', error);
 
       if (error) {
         console.error('Signup error:', error);

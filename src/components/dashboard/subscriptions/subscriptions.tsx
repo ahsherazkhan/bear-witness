@@ -17,6 +17,7 @@ export async function Subscriptions() {
       return <MultipleSubscriptionsView subscriptions={subscriptions} />;
     }
   } else {
+    console.log('No subscription response data, showing SubscriptionErrorView');
     return <SubscriptionErrorView />;
   }
 }

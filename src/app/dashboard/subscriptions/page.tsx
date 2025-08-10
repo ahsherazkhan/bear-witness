@@ -1,10 +1,12 @@
 import { LoadingScreen } from '@/components/dashboard/layout/loading-screen';
 import { Suspense } from 'react';
 import { Subscriptions } from '@/components/dashboard/subscriptions/subscriptions';
+import { DebugUserInfo } from '@/components/dashboard/debug-user-info';
 
 export default async function SubscriptionsListPage() {
   return (
     <main className="p-4 lg:gap-6 lg:p-8">
+      <DebugUserInfo />
       <Suspense fallback={<LoadingScreen />}>
         <Subscriptions />
       </Suspense>

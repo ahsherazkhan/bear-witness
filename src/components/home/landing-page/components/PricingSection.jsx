@@ -53,15 +53,15 @@ const PricingSection = () => {
                 <p className="text-gray-600 mb-6">{plan.description}</p>
 
                 <div className="mb-4">
-                  {typeof plan.monthlyPrice === 'number' ? (
+                  {plan.priceId && typeof plan.priceId.month === 'string' ? (
                     <>
                       <div className="text-4xl font-bold text-black">
-                        ${billingCycle === 'yearly' ? plan.yearlyPrice : plan.monthlyPrice}
+                        ${billingCycle === 'yearly' ? plan.priceId.year : plan.priceId.month}
                       </div>
                       <div className="text-gray-600">per month{billingCycle === 'yearly' && ', billed annually'}</div>
                     </>
                   ) : (
-                    <div className="text-4xl font-bold text-black">{plan.monthlyPrice}</div>
+                    <div className="text-4xl font-bold text-black">{plan.priceId?.month || 'Price not available'}</div>
                   )}
                 </div>
               </div>

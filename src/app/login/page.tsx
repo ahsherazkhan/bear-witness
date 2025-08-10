@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import '../../styles/login.css';
 import { LoginCardGradient } from '@/components/gradients/login-card-gradient';
 import { GhLoginButton } from '@/components/authentication/gh-login-button';
+import { GoogleLoginButton } from '@/components/authentication/google-login-button';
 import { Input } from '@/components/ui/input';
 import { CreditCard, BarChart3, ArrowRight, Shield, Clock, Mail } from 'lucide-react';
 import { createClient } from '@/utils/supabase/client';
@@ -15,6 +16,10 @@ export default function LoginPage() {
   const router = useRouter();
   const supabase = createClient();
   const { toast } = useToast();
+
+  // Check if user is coming from extension
+  const isFromExtension =
+    typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('from') === 'extension';
 
   const [formData, setFormData] = useState({
     email: '',
@@ -415,6 +420,9 @@ export default function LoginPage() {
                   </Button>
                 </div>
               )}
+              {/* Show Google login for extension users */}
+              {isFromExtension && <GoogleLoginButton label={'Sign in with Google'} fromExtension={true} />}
+
               {/* <GhLoginButton label={'Log in with GitHub'} /> */}
               <div
                 className={
