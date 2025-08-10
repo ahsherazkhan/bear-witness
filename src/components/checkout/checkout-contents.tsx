@@ -97,6 +97,17 @@ export function CheckoutContents({ userEmail }: Props) {
             paddle.Checkout.open({
               ...(userEmail && { customer: { email: userEmail } }),
               items: [{ priceId: priceId, quantity: 1 }],
+              settings: {
+                theme: 'dark',
+                allowLogout: !userEmail,
+                showAddDiscounts: true,
+                allowDiscountRemoval: true,
+                showAddTaxId: true,
+                displayMode: 'inline',
+                variant: 'one-page',
+                successUrl: `${window.location.origin}/checkout/success`,
+                locale: 'en',
+              },
             });
           } else {
             console.error('❌ Missing paddle instance or priceId:', { paddle: !!paddle, priceId });
