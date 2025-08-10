@@ -35,12 +35,39 @@ export function CheckoutContents({ userEmail }: Props) {
   );
 
   useEffect(() => {
+    console.log('=== CHECKOUT DEBUG START ===');
+    console.log('Checkout Debug:', {
+      paddleInitialized: paddle?.Initialized,
+      clientToken: process.env.NEXT_PUBLIC_PADDLE_CLIENT_TOKEN ? 'SET' : 'NOT SET',
+      environment: process.env.NEXT_PUBLIC_PADDLE_ENV,
+      priceId: priceId,
+      userEmail: userEmail,
+    });
+
+    // Log all environment variables for debugging
+    console.log('Environment Variables:', {
+      NEXT_PUBLIC_PADDLE_ENV: process.env.NEXT_PUBLIC_PADDLE_ENV,
+      NEXT_PUBLIC_PADDLE_CLIENT_TOKEN: process.env.NEXT_PUBLIC_PADDLE_CLIENT_TOKEN ? 'SET' : 'NOT SET',
+      NEXT_PUBLIC_PRICE_ID_STARTER_MONTHLY: process.env.NEXT_PUBLIC_PRICE_ID_STARTER_MONTHLY,
+      NEXT_PUBLIC_PRICE_ID_STARTER_YEARLY: process.env.NEXT_PUBLIC_PRICE_ID_STARTER_YEARLY,
+      NEXT_PUBLIC_PRICE_ID_PRO_MONTHLY: process.env.NEXT_PUBLIC_PRICE_ID_PRO_MONTHLY,
+      NEXT_PUBLIC_PRICE_ID_PRO_YEARLY: process.env.NEXT_PUBLIC_PRICE_ID_PRO_YEARLY,
+    });
+
     if (!paddle?.Initialized && process.env.NEXT_PUBLIC_PADDLE_CLIENT_TOKEN && process.env.NEXT_PUBLIC_PADDLE_ENV) {
+      console.log('✅ All required env vars present, initializing Paddle...');
+      console.log('Paddle Config:', {
+        token: process.env.NEXT_PUBLIC_PADDLE_CLIENT_TOKEN ? 'TOKEN_SET' : 'NO_TOKEN',
+        environment: process.env.NEXT_PUBLIC_PADDLE_ENV,
+        priceId: priceId,
+      });
+
       initializePaddle({
         token: process.env.NEXT_PUBLIC_PADDLE_CLIENT_TOKEN,
         environment: process.env.NEXT_PUBLIC_PADDLE_ENV as Environments,
         eventCallback: (event) => {
           if (event.data && event.name) {
+            console.log('Paddle Event:', event.name, event.data);
             handleCheckoutEvents(event.data);
           }
         },
@@ -56,16 +83,41 @@ export function CheckoutContents({ userEmail }: Props) {
             successUrl: '/checkout/success',
           },
         },
-      }).then(async (paddle) => {
-        if (paddle && priceId) {
-          setPaddle(paddle);
-          paddle.Checkout.open({
-            ...(userEmail && { customer: { email: userEmail } }),
-            items: [{ priceId: priceId, quantity: 1 }],
+      })
+        .then(async (paddle) => {
+          console.log('✅ Paddle initialized successfully:', paddle);
+          if (paddle && priceId) {
+            setPaddle(paddle);
+            console.log('🚀 Opening checkout with priceId:', priceId);
+            console.log('Checkout payload:', {
+              customer: userEmail ? { email: userEmail } : undefined,
+              items: [{ priceId: priceId, quantity: 1 }],
+            });
+
+            paddle.Checkout.open({
+              ...(userEmail && { customer: { email: userEmail } }),
+              items: [{ priceId: priceId, quantity: 1 }],
+            });
+          } else {
+            console.error('❌ Missing paddle instance or priceId:', { paddle: !!paddle, priceId });
+          }
+        })
+        .catch((error) => {
+          console.error('❌ Paddle initialization failed:', error);
+          console.error('Error details:', {
+            message: error.message,
+            stack: error.stack,
+            name: error.name,
           });
-        }
+        });
+    } else {
+      console.log('❌ Missing required environment variables:', {
+        paddleInitialized: paddle?.Initialized,
+        hasClientToken: !!process.env.NEXT_PUBLIC_PADDLE_CLIENT_TOKEN,
+        hasEnvironment: !!process.env.NEXT_PUBLIC_PADDLE_ENV,
       });
     }
+    console.log('=== CHECKOUT DEBUG END ===');
   }, [paddle?.Initialized, priceId, userEmail]);
 
   useEffect(() => {
