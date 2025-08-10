@@ -121,6 +121,8 @@ export function CheckoutContents({ userEmail }: Props) {
             name: error.name,
           });
         });
+    } else if (paddle?.Initialized) {
+      console.log('✅ Paddle already initialized, skipping initialization');
     } else {
       console.log('❌ Missing required environment variables:', {
         paddleInitialized: paddle?.Initialized,
