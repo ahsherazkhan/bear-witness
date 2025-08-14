@@ -2,12 +2,11 @@ import { NextResponse } from 'next/server';
 import { Groq } from 'groq-sdk';
 import { createClient } from '@supabase/supabase-js';
 import { verifySignedUserId } from '@/lib/signed-cookie';
-import { Nut } from 'lucide-react';
 
 // Rate limits for non-authenticated users
 const GROQ_RATE_LIMIT = {
   PER_MINUTE: 25,
-  PER_USER_TOTAL: 4, // Allow 100 requests for anonymous users
+  PER_USER_TOTAL: 50, // Allow 100 requests for anonymous users
 };
 
 const ALLOWED_ORIGINS = [
@@ -75,28 +74,7 @@ export async function POST(request) {
     const body = await request.json();
     let { text, visitorId } = body;
     const authHeader = request.headers.get('x-user-id');
-    let userId = null;
-
-    if (authHeader) {
-      userId = verifySignedUserId(authHeader);
-      const token = authHeader.substring(7);
-      try {
-        // Verify the auth token with Supabase
-        const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.SUPABASE_SERVICE_ROLE_KEY);
-        const {
-          data: { user },
-          error,
-        } = await supabase.auth.getUser(token);
-        if (!error && user) {
-          userId = user.id;
-          console.log('userid from auth token:', userId);
-        } else {
-          console.log('auth token verification failed:', error);
-        }
-      } catch (error) {
-        console.log('token verification failed:', error.message);
-      }
-    }
+    let userId = authHeader ? verifySignedUserId(authHeader) : null;
     if (!text || (!userId && !visitorId)) {
       return new NextResponse(JSON.stringify({ error: 'Missing text or user identification' }), {
         status: 400,
@@ -140,7 +118,7 @@ export async function POST(request) {
         }
 
         // New user with 500 requests
-        if (customerWithoutSub.ai_requests_remaining <= 0) {
+        if (true) {
           return new NextResponse(
             JSON.stringify({
               error: 'AI request limit reached. Please upgrade to continue.',
@@ -157,7 +135,6 @@ export async function POST(request) {
         isAuthenticated = true;
       } else {
         // User with active subscription
-        const subscription = customer.subscriptions[0];
 
         if (customer.ai_requests_remaining <= 0) {
           return new NextResponse(
@@ -198,10 +175,6 @@ export async function POST(request) {
       // Track non-authenticated user
       trackUser(visitorId);
       recordGroqRequest();
-
-      // Calculate remaining requests for anonymous user
-      const currentCount = userRequestStore.get(visitorId) || 0;
-      const remainingRequests = GROQ_RATE_LIMIT.PER_USER_TOTAL - currentCount;
     }
 
     if (!text || typeof text !== 'string') {

@@ -4,25 +4,25 @@ import { useRef, useState, useEffect } from 'react';
 
 const steps = [
   {
-    img: '/assets/pice1.png',
+    img: '/assets/2.png',
     alt: 'Human Content badge',
     headline: 'Spot What’s Real',
     text: 'Bear Witness highlights human-written posts with a clear badge and confidence score so you know what’s authentic.',
   },
   {
-    img: '/assets/pic2.png',
+    img: '/assets/1.png',
     alt: 'AI Detected badge',
     headline: 'See the AI Percentage',
     text: 'Every post gets a badge showing exactly how much AI-generated content it contains. No more guessing.',
   },
   {
-    img: '/assets/pic3.png',
+    img: '/assets/4.png',
     alt: 'Bear Witness extension popup',
     headline: 'Take Control of Your Feed',
     text: 'Toggle AI scanning and choose to blur posts with high AI content. You decide what you want to see.',
   },
   {
-    img: '/assets/pic4.png',
+    img: '/assets/3.png',
     alt: 'Bear Witness blurring high AI content',
     headline: 'Blur Out the Bots',
     text: 'Automatically blur posts that are mostly AI, so you can focus on real conversations.',
