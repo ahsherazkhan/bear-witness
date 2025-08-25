@@ -2,11 +2,12 @@ import { NextResponse } from 'next/server';
 import { Groq } from 'groq-sdk';
 import { createClient } from '@supabase/supabase-js';
 import { verifySignedUserId } from '@/lib/signed-cookie';
+import { buildAiDetectionPrompt } from '../../../lib/prompt.js';
 
 // Rate limits for non-authenticated users
 const GROQ_RATE_LIMIT = {
   PER_MINUTE: 25,
-  PER_USER_TOTAL: 50, // Allow 100 requests for anonymous users
+  PER_USER_TOTAL: 10, // Allow 100 requests for anonymous users
 };
 
 const ALLOWED_ORIGINS = [
@@ -213,17 +214,6 @@ export async function POST(request) {
     const listPatterns = (text.match(/\b(first|second|third|finally|in conclusion)\b/gi) || []).length;
     const passiveVoice = (text.match(/\b(is|are|was|were|been|being)\s+\w+ed\b/g) || []).length;
 
-    // AI Analysis (existing logic)
-    const nuancedPrompts = [
-      `Analyze this text for AI vs human writing patterns. Consider that most text falls somewhere in between. Rate 0-100 where 0=clearly human, 30=probably human, 50=uncertain, 70=probably AI, 100=clearly AI: "${text.substring(0, 300)}${text.length > 300 ? '...' : ''}"\n\nScore:`,
-      `Rate the likelihood this text was AI-generated. Use the full 0-100 scale - avoid extremes unless very certain. Most text scores between 20-80: "${text.substring(0, 300)}${text.length > 300 ? '...' : ''}"\n\nNumber:`,
-      `AI detection confidence score (0-100). Consider writing style, vocabulary, structure. Be nuanced - few texts are 0 or 100: "${text.substring(0, 300)}${text.length > 300 ? '...' : ''}"\n\nAnswer:`,
-      `Score this text's AI probability 0-100. Look for subtle patterns. Most real text scores 25-75 range: "${text.substring(0, 300)}${text.length > 300 ? '...' : ''}"\n\nScore:`,
-    ];
-
-    const prompt = nuancedPrompts[Math.floor(Math.random() * nuancedPrompts.length)];
-    const systemPrompt = `You are an expert AI detection system. Respond with ONLY a number from 0 to 100. Be nuanced - most text isn't completely human (0) or completely AI (100). Use the full range: 0-20=very human, 20-40=probably human, 40-60=mixed/uncertain, 60-80=probably AI, 80-100=very AI.`;
-
     let score = 0;
 
     if (process.env.NODE_ENV === 'development') {
@@ -231,10 +221,7 @@ export async function POST(request) {
     } else {
       const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
       const chatCompletion = await groq.chat.completions.create({
-        messages: [
-          { role: 'system', content: systemPrompt },
-          { role: 'user', content: prompt },
-        ],
+        messages: buildAiDetectionPrompt(text),
         model: 'llama3-8b-8192',
         temperature: 0.3,
         max_tokens: 5,

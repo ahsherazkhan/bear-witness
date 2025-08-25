@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { PoweredByPaddle } from '@/components/home/footer/powered-by-paddle';
 import '../../../styles/checkout.css';
 import { createClient } from '@/utils/supabase/server';
+import { SetPurchaseCookie } from '@/components/checkout/set-purchase-cookie';
 
 export default async function SuccessPage() {
   const supabase = await createClient();
@@ -12,6 +13,7 @@ export default async function SuccessPage() {
 
   return (
     <main>
+      <SetPurchaseCookie />
       <div className={'relative h-screen overflow-hidden'}>
         <div className={'absolute inset-0 px-6 flex items-center justify-center'}>
           <div className={'flex flex-col items-center text-white text-center'}>
