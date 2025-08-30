@@ -5,7 +5,6 @@ export async function GET() {
 
   res.cookies.set('purchase-success', 'true', {
     httpOnly: false,
-    secure: process.env.NODE_ENV === 'production',
     sameSite: 'lax',
     path: '/',
     maxAge: 60 * 5,

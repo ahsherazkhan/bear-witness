@@ -23,16 +23,10 @@ export async function GET(request: Request) {
       // Set your existing user cookie with proper domain configuration
       const cookieOptions = {
         httpOnly: false,
-        secure: process.env.NODE_ENV === 'production',
         sameSite: 'lax' as const,
         path: '/',
         maxAge: 60 * 60 * 24 * 30, // 30 days
       };
-
-      // Only set domain in production to avoid issues in development
-      if (process.env.NODE_ENV === 'production') {
-        cookieOptions.domain = '.bear-witness.vercel.app';
-      }
 
       cookieStore.set('x-user-id', signedUserId, cookieOptions);
 
@@ -40,7 +34,6 @@ export async function GET(request: Request) {
       if (fromExtension) {
         cookieStore.set('auth-success', 'true', {
           httpOnly: false, // extension needs to read it
-          secure: process.env.NODE_ENV === 'production',
           sameSite: 'lax' as const,
           path: '/',
           maxAge: 60 * 5, // 5 minutes (short-lived)

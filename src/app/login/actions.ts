@@ -36,11 +36,11 @@ export async function signInWithGithub() {
 export async function signInWithGoogle(fromExtension = false) {
   const supabase = await createClient();
 
-  // Build the callback URL with the extension parameter
-  const callbackUrl = fromExtension
-    ? `http://localhost:3000/auth/callback?from=extension`
-    : `http://localhost:3000/auth/callback`;
+  // Determine base URL depending on environment
+  const baseUrl = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://bear-witness.vercel.app';
 
+  // Build callback URL (append ?from=extension if needed)
+  const callbackUrl = fromExtension ? `${baseUrl}/auth/callback?from=extension` : `${baseUrl}/auth/callback`;
   const { error, data } = await supabase.auth.signInWithOAuth({
     provider: 'google',
     options: {
